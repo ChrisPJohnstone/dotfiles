@@ -18,7 +18,11 @@ augroup RelativeNumberToggle
 augroup END
 
 " Add a vertical ruler at char 80 & make it light grey
-set colorcolumn=80
+augroup LineLengthMarkers
+    autocmd!
+    autocmd BufNewFile,Bufread *.py set colorcolumn=80
+    autocmd BufNewFile,BufRead *.sql set colorcolumn=120
+augroup END
 highlight ColorColumn ctermbg=8
 
 " Always show command bar
