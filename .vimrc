@@ -43,8 +43,3 @@ set wildmode=longest
 
 " For all those times you hit a button and you're not sure what it was
 set showcmd
-
-" F5 will run current file in python
-" map <F5> :w !python3 <CR>
-map <F5> :w \| !%:p:h/local.sh
-
