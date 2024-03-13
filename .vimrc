@@ -43,3 +43,6 @@ set wildmode=longest
 
 " For all those times you hit a button and you're not sure what it was
 set showcmd
+
+" Macro for encasing
+let @1 = "ciw\"\<C-R>\"\"\<ESC>bh"
