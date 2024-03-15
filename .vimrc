@@ -1,6 +1,16 @@
 " Turn on syntax highlighting & and color scheme
 colorscheme slate
 syntax on
+
+highlight StatusLine ctermfg=black ctermbg=magenta
+highlight StatusLineNC ctermfg=black ctermbg=magenta
+
+" Style pane split
+highlight VertSplit ctermfg=magenta ctermbg=None
+
+" ------------------------------ "
+
+" Syntax corrections for unsupported file types
 augroup SyntaxHighlighting
     autocmd!
     autocmd BufNewFile,BufRead *.md set filetype=text
@@ -25,13 +35,8 @@ augroup LineLengthMarkers
 augroup END
 highlight ColorColumn ctermbg=8
 
-" Always show command bar & styling for it
+" Always show status bar
 set laststatus=2
-highlight StatusLine ctermfg=black ctermbg=magenta
-highlight StatusLineNC ctermfg=black ctermbg=magenta
-
-" Style pane split
-highlight VertSplit ctermfg=magenta ctermbg=None
 
 " Set tab length to 4 & use spaces
 set shiftwidth=4
