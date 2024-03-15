@@ -55,5 +55,8 @@ set showcmd
 " Enable backspacing to previous line
 set backspace=eol,start
 
+" Disable that gahd damn bell
+set visualbell
+
 " Macro for encasing
 let @1 = "ciw\"\<C-R>\"\"\<ESC>bh"
