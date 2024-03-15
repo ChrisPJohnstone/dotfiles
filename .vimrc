@@ -25,8 +25,13 @@ augroup LineLengthMarkers
 augroup END
 highlight ColorColumn ctermbg=8
 
-" Always show command bar
+" Always show command bar & styling for it
 set laststatus=2
+highlight StatusLine ctermfg=black ctermbg=magenta
+highlight StatusLineNC ctermfg=black ctermbg=magenta
+
+" Style pane split
+highlight VertSplit ctermfg=magenta ctermbg=None
 
 " Set tab length to 4 & use spaces
 set shiftwidth=4
