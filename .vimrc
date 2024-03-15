@@ -34,6 +34,7 @@ highlight ColorColumn ctermbg=8
 
 " Always show status bar
 set laststatus=2
+set statusline=[%f]\ %y\ %=\ [Column:\ %v]
 
 " Set tab length to 4 & use spaces
 set shiftwidth=4
