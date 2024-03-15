@@ -3,4 +3,4 @@ parse_git_branch() {
 }
 NEWLINE=$'\n'
 setopt PROMPT_SUBST
-export PROMPT='%K{cyan}%F{black}[%D{%T}] [%~]$(parse_git_branch)%k%f ${NEWLINE}%% '
+export PROMPT='%K{cyan}%F{black}[%D{%T}] [%~]$(parse_git_branch)%k%F{cyan} ${NEWLINE}%% '
