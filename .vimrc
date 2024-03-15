@@ -2,13 +2,11 @@
 colorscheme slate
 syntax on
 
-highlight StatusLine ctermfg=black ctermbg=magenta
-highlight StatusLineNC ctermfg=black ctermbg=magenta
-
-" Style pane split
+" Colour Overrides
+highlight Normal ctermbg=None
+highlight StatusLine ctermbg=magenta ctermfg=black
+highlight StatusLineNC ctermbg=magenta ctermfg=black 
 highlight VertSplit ctermfg=magenta ctermbg=None
-
-" ------------------------------ "
 
 " Syntax corrections for unsupported file types
 augroup SyntaxHighlighting
@@ -18,7 +16,6 @@ augroup SyntaxHighlighting
 augroup END
 
 " Display line number & highlight line cursor is on
-set cursorline
 set scrolloff=100
 set number
 augroup RelativeNumberToggle
