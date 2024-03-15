@@ -3,4 +3,4 @@ parse_git_branch() {
 }
 NEWLINE=$'\n'
 setopt PROMPT_SUBST
-export PROMPT='[%D{%f/%m/%y} %D{%L:%M:%S}] [%d] $(parse_git_branch) ${NEWLINE}%% '
+export PROMPT='[%D{%T}] [%~] $(parse_git_branch) ${NEWLINE}%% '
