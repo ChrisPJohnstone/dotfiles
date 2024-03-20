@@ -3,3 +3,5 @@ parse_git_branch() {
 }
 setopt PROMPT_SUBST
 export PROMPT='%S[%D{%T}] [%1~]$(parse_git_branch)%s '
+
+alias grep='grep --exclude-dir "__pycache__" --exclude-dir "cdk.out" --exclude-dir ".git"'
