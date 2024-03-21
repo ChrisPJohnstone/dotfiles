@@ -5,5 +5,8 @@ parse_git_branch() {
 setopt PROMPT_SUBST
 export PROMPT='%S[%D{%T}] [%1~]$(parse_git_branch)%s '
 
+# Changes shell to vi mode
+bindkey -v
+
 # Aliases grep to exclude directories that make me cry
 alias grep='grep --exclude-dir "__pycache__" --exclude-dir "cdk.out" --exclude-dir ".git"'
