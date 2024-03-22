@@ -42,6 +42,12 @@ set tabstop=4
 set expandtab
 set smartindent
 
+" Window resizing using Ctrl + hjkl
+nnoremap <C-W><C-h> <C-W><
+nnoremap <C-W><C-j> <C-W>+
+nnoremap <C-W><C-k> <C-W>-
+nnoremap <C-W><C-l> <C-W>>
+
 " Highlight matches while searching
 set hlsearch
 
