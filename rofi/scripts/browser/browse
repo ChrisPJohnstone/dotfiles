@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 SCRIPT_DIR="${HOME}/.config/rofi/scripts"
+DISNEY_PLUS="Disney+"
 NETFLIX="Netflix"
 PRIME_VIDEO="Amazon Prime Video"
 declare -A sites=(
     ["Chess"]="www.chess.com"
-    ["Disney+"]="www.disneyplus.com"
+    ["${DISNEY_PLUS}"]="www.disneyplus.com"
     ["Github"]="www.github.com/ChrisPJohnstone"
     ["GMail"]="mail.google.com"
     ["LinkedIn"]="www.linkedin.com"
@@ -18,6 +19,9 @@ declare -A follow_ups=(
     ["${NETFLIX}"]="${SCRIPT_DIR}/browser/search_netflix"
     ["${PRIME_VIDEO}"]="${SCRIPT_DIR}/browser/search_prime_video"
 )
+declare -A open_scripts=(
+    ["${DISNEY_PLUS}"]="${SCRIPT_DIR}/browser/open_with_vpn_off"
+)
 
 input=$(printf '%s\n' "${!sites[@]}" | rofi -i -dmenu -p "Browse")
 if [[ -z ${input} ]]; then
@@ -27,6 +31,8 @@ elif [[ -z "${sites[${input}]}" ]]; then
 elif [[ -n "${follow_ups[${input}]}" ]]; then
     secondary_input=$(${SCRIPT_DIR}/input ${input})
     eval "${follow_ups[${input}]} $1 \"${secondary_input}\""
+elif [[ -n "${open_scripts[${input}]}" ]]; then
+    eval "${open_scripts[${input}]} $1 ${sites[${input}]}"
 else
     $1 "${sites[${input}]}"
 fi
