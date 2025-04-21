@@ -95,3 +95,24 @@ HISTIGNORE='ls:cd:fg:clear:exit'
 
 # Ignore case for tab completion
 bind 'set completion-ignore-case on'
+
+# ------------------------------- COMPLETIONS -------------------------------- #
+# COMP_WORDS is the line as an array
+# COMP_CWORD is the index of the word to complete
+# COMP_REPLY is the array of completions
+
+function completion_cdk() {
+    declare -a COMMANDS=(
+        "ls"
+        "synth"
+        "deploy"
+        "acknowledge"
+    )
+
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+        COMPREPLY=($(compgen -W "${COMMANDS[*]}" -- "${COMP_WORDS[1]}"))
+        return
+    fi
+}
+
+complete -F completion_cdk cdk
