@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-SEARCH_ENGINE="duckduckgo.com"
-$1 "${SEARCH_ENGINE}/$2"
+$1 "duckduckgo.com/$2"
