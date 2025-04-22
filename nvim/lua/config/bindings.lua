@@ -7,6 +7,9 @@ vim.api.nvim_set_keymap("n", "<leader>d", ":e %:h<CR>", {noremap = true})
 -- Save
 vim.api.nvim_set_keymap("n", "<leader>s", ":w<CR>", {noremap = true})
 
+-- New window default to vertical
+vim.api.nvim_set_keymap("n", "<C-W>n", ":vnew<CR>", {noremap = true})
+
 -- Window resizing using Ctrl + hjkl
 vim.api.nvim_set_keymap("n", "<C-W><C-h>", "<C-W><", {noremap = true})
 vim.api.nvim_set_keymap("n", "<C-W><C-j>", "<C-W>+", {noremap = true})
