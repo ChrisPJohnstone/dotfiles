@@ -102,6 +102,7 @@ bind 'set completion-ignore-case on'
 # COMP_REPLY is the array of completions
 
 function completion_cdk() {
+    COMPREPLY=()
     declare -a COMMANDS=(
         "ls"
         "synth"
@@ -112,6 +113,14 @@ function completion_cdk() {
     if [[ ${COMP_CWORD} -eq 1 ]]; then
         COMPREPLY=($(compgen -W "${COMMANDS[*]}" -- "${COMP_WORDS[1]}"))
         return
+    fi
+
+    local COMMAND="${COMP_WORDS[1]}"
+    if [[ ${COMP_CWORD} -eq 2 ]]; then
+        if [[ ${COMMAND} == "deploy" ]]; then
+            [ -d "cdk.out" ] && COMPREPLY=($(ls cdk.out/${COMP_WORDS[2]}*.template.json | sed 's/cdk.out\/\(.*\)\.template\.json/\1/'))
+            return
+        fi
     fi
 }
 
