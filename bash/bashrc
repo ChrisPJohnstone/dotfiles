@@ -116,11 +116,9 @@ function completion_cdk() {
     fi
 
     local COMMAND="${COMP_WORDS[1]}"
-    if [[ ${COMP_CWORD} -eq 2 ]]; then
-        if [[ ${COMMAND} == "deploy" ]]; then
-            [ -d "cdk.out" ] && COMPREPLY=($(ls cdk.out/${COMP_WORDS[2]}*.template.json | sed 's/cdk.out\/\(.*\)\.template\.json/\1/'))
-            return
-        fi
+    if [[ ${COMMAND} == "deploy" ]]; then
+        [ -d "cdk.out" ] && COMPREPLY=($(ls cdk.out/${COMP_WORDS[COMP_CWORD]}*.template.json | sed 's/cdk.out\/\(.*\)\.template\.json/\1/'))
+        return
     fi
 }
 
