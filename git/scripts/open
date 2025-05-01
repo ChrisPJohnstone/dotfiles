@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Get remote repository
+remote=$(git config --get remote.origin.url)
+
+# Check if remote URL is empty
+if [ -z "$remote" ]; then
+  echo "No remote URL found. Please check your git configuration."
+  exit 1
+fi
+
+# Get fields we need from remote using sed
+fields=$(echo "$remote" | sed 's/git@\(.*\):\(.*\)\/\(.*\).git/\1 \2 \3/')
+
+# Read the output of sed to variables
+read -r site user repo <<< "$fields"
+
+url="https://www.$site/$user/$repo"
+$BROWSER "$url"

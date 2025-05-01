@@ -14,3 +14,4 @@
     edit = !$EDITOR $(git ls-files -o -m --exclude-standard)
     newbranch = !git checkout develop && git pull && git checkout -b $1
     update = !git checkout develop && git pull && git checkout - && git merge develop
+    open = !$HOME/.config/git/scripts/open
