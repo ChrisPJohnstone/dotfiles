@@ -84,6 +84,9 @@ set -o vi
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
 
+# Bind `Ctrl+e` to open current command in editor and execute on closing
+bind -m vi-insert '"\C-e": edit-and-execute-command'
+
 # Resize the shell to fit the window after actions
 shopt -s checkwinsize
 
