@@ -1,18 +1,60 @@
 #!/usr/bin/env bash
-# Get remote repository
-remote=$(git config --get remote.origin.url)
+function _build_github_url() {
+    read -r site user repo branch path <<< $@
+    local url="https://www.$site/$user/$repo/tree/$branch"
+    if [[ -z $path ]]; then
+        echo $url
+        return 0
+    fi
+    echo "$url/$path"
+    return 0
+}
 
-# Check if remote URL is empty
-if [ -z "$remote" ]; then
-  echo "No remote URL found. Please check your git configuration."
-  exit 1
-fi
+function _build_bitbucket_url() {
+    read -r site user repo branch path <<< $@
+    local url="https://$site/$user/$repo/src/$branch"
+    if [[ -z $path ]]; then
+        echo $url
+        return 0
+    fi
+    echo "$url/$path"
+    return 0
+}
 
-# Get fields we need from remote using sed
-fields=$(echo "$remote" | sed 's/git@\(.*\):\(.*\)\/\(.*\).git/\1 \2 \3/')
+function build_url() {
+    # Get remote repository
+    local remote=$(git config --get remote.origin.url)
 
-# Read the output of sed to variables
-read -r site user repo <<< "$fields"
+    # Check if remote URL is empty
+    if [ -z "$remote" ]; then
+      echo "No remote URL found. Please check your git configuration."
+      return 1
+    fi
 
-url="https://www.$site/$user/$repo"
+    # Get fields we need from remote
+    fields=$(echo "$remote" | sed 's/git@\(.*\):\(.*\)\/\(.*\).git/\1 \2 \3/')
+    read -r site user repo <<< "$fields"
+
+    # Get git branch
+    local branch=$(git rev-parse --abbrev-ref HEAD)
+
+    # Get path
+    local path=$1
+    # TODO: Expand this to support being called from anywhere other than repo root
+
+    # Build the URL based on the site
+    args=($site $user $repo $branch $path)
+    if [[ $site = "github.com" ]]; then
+        _build_github_url "${args[@]}"
+        return 0
+    elif [[ $site = "bitbucket.org" ]]; then
+        _build_bitbucket_url "${args[@]}"
+        return 0
+    fi
+    echo "Unsupported site: $site"
+    return 1
+}
+
+# Open the URL in the default browser
+url=$(build_url "$1")
 $BROWSER "$url"
