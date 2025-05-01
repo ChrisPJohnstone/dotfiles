@@ -36,7 +36,9 @@ function build_url() {
     read -r site user repo <<< "$fields"
 
     # Get git branch
-    local branch=$(git rev-parse --abbrev-ref HEAD)
+    # local branch=$(git rev-parse --abbrev-ref HEAD)
+    local branch="develop"
+    # TODO: Make this dynamic once you figure out branches with / in name
 
     # Get path
     local path=$1
