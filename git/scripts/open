@@ -36,9 +36,12 @@ function build_url() {
     read -r site user repo <<< "$fields"
 
     # Get git branch
-    # local branch=$(git rev-parse --abbrev-ref HEAD)
-    local branch="develop"
-    # TODO: Make this dynamic once you figure out branches with / in name
+    local branch=$(git rev-parse --abbrev-ref HEAD)
+    # Overrides branch with main if there's a slash in the branch name
+    # TODO: Figure out URL for branches with slashes
+    if [[ $branch == *"/"* ]]; then
+        local branch=$(git branch -r | grep 'origin/HEAD' | sed 's/.* -> origin\/\(.*\)/\1/')
+    fi
 
     # Get path
     local path=$1
