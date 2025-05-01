@@ -1,5 +1,14 @@
 # -------------------------- ENVIRONMENT VARIABLES --------------------------- #
 
+# Command for opening a browser
+if [[ "$(uname)" == "Linux" ]]; then
+    export BROWSER='firefox'
+elif [[ "$(uname)" == "Darwin" ]]; then
+    export BROWSER='open -a firefox'
+else
+    echo "Unknown OS, please set BROWSER manually or update bashrc"
+fi
+
 # Editor for programs to default do (e.g. `git`) 
 export EDITOR='nvim'
 
