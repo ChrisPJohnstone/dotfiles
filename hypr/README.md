@@ -1,20 +1,24 @@
-# TODO: Make a widget to display this on background (`glow` has good render)
+# Overview
 
-# Apps
+Hyprland is a dynamic window manager
+
+# Usage
+
+## Apps
 
 [S]                 Open app launcher
 [S] + Space         Open app launcher
 [S] + Return        Open terminal
 [S] + B             Open browser
 
-# Navigation
+## Navigation
 
 [S] + [arrow]       Move focus to [direction]
 [S] + [n]           Move focus to workspace [n]
 [S] + Q             Close focused window
 [S] + Shift + Q     Log out
 
-# Moving Windows
+## Moving Windows
 
 [S] + Shift + [n]   Move focused window to workspace [n]
 [S] + F             Toggle Fullscreen
@@ -22,6 +26,11 @@
 [S] + Left Click    Drag Window
 [S] + Right Click   Resize Window
 
-# Other
+## Other
 [S] + S             Screenshot
 [S] + V             Connect/Disconnect from VPN
+
+# Links
+
+- [hyprland](https://hyprland.org/)
+- [configuration](https://wiki.hyprland.org/Configuring/)
