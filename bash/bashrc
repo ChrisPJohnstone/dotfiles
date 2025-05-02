@@ -102,7 +102,7 @@ PS1+="\[$(tput sgr0)\] "
 shopt -s histappend
 HISTCONTROL=ignoredups
 HISTSIZE=10000
-HISTFILE=~/.histfile
+HISTFILE=$HOME/.histfile
 HISTIGNORE='ls:cd:fg:clear:exit'
 
 # Ignore case for tab completion

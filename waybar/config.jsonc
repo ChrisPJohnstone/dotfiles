@@ -39,7 +39,7 @@
         "exec": "piactl get connectionstate",
         "format": "VPN: {}",
         "interval": 1,
-        "on-click": "~/configs/scripts/pia_vpn_util.sh"
+        "on-click": "$HOME/configs/scripts/pia_vpn_util.sh"
     },
     "disk": {
         "format": " {percentage_used}%",
