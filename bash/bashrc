@@ -22,7 +22,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 # Calls a custom script in this repo
-alias tcd="~/configs/scripts/start_tmux_session.sh"
+alias tcd="${HOME}/.config/tmux/scripts/start_tmux_session"
 
 # Determine git branch at pwd
 function parse_git_branch() {
