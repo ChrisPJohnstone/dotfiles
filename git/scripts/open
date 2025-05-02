@@ -1,32 +1,22 @@
 #!/usr/bin/env bash
 function _build_github_url() {
-    read -r site user repo branch path <<< $@
-    local url="https://www.$site/$user/$repo/tree/$branch"
-    if [[ -z $path ]]; then
-        echo $url
-        return 0
-    fi
-    echo "$url/$path"
+    read -r site user repo hash path <<< $@
+    local url="https://www.$site/$user/$repo/tree/$hash"
+    [[ -z $path ]] && echo $url || echo "$url/$path"
     return 0
 }
 
 function _build_bitbucket_url() {
-    read -r site user repo branch path <<< $@
-    local url="https://$site/$user/$repo/src/$branch"
-    if [[ -z $path ]]; then
-        echo $url
-        return 0
-    fi
-    echo "$url/$path"
+    read -r site user repo hash path <<< $@
+    local url="https://www.$site/$user/$repo/src/$hash"
+    [[ -z $path ]] && echo $url || echo "$url/$path"
     return 0
 }
 
 function build_url() {
     # Get remote repository
     local remote=$(git config --get remote.origin.url)
-
-    # Check if remote URL is empty
-    if [ -z "$remote" ]; then
+    if [[ -z "$remote" ]]; then
       echo "No remote URL found. Please check your git configuration."
       return 1
     fi
@@ -35,20 +25,15 @@ function build_url() {
     fields=$(echo "$remote" | sed 's/git@\(.*\):\(.*\)\/\(.*\).git/\1 \2 \3/')
     read -r site user repo <<< "$fields"
 
-    # Get git branch
-    local branch=$(git rev-parse --abbrev-ref HEAD)
-    # Overrides branch with main if there's a slash in the branch name
-    # TODO: Figure out URL for branches with slashes
-    if [[ $branch == *"/"* ]]; then
-        local branch=$(git branch -r | grep 'origin/HEAD' | sed 's/.* -> origin\/\(.*\)/\1/')
-    fi
+    # Get git hash
+    local hash=$(git rev-parse HEAD)
 
     # Get path
     local path=$1
     # TODO: Expand this to support being called from anywhere other than repo root
 
     # Build the URL based on the site
-    args=($site $user $repo $branch $path)
+    args=($site $user $repo $hash $path)
     if [[ $site = "github.com" ]]; then
         _build_github_url "${args[@]}"
         return 0
