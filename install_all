@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+SCRIPT_PATH=$(readlink -f "${BASH_SOURCE}")
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+
+$SCRIPT_DIR/alacritty/scripts/install
+$SCRIPT_DIR/bash/scripts/install
+$SCRIPT_DIR/git/scripts/install
+$SCRIPT_DIR/nvim/scripts/install
+$SCRIPT_DIR/tmux/scripts/install
+$SCRIPT_DIR/vim/scripts/install
+if [[ "$(uname)" == "Linux" ]]; then
+    $SCRIPT_DIR/gammastep/scripts/install
+    $SCRIPT_DIR/gtk-3.0/scripts/install
+    $SCRIPT_DIR/hypr/scripts/install
+    $SCRIPT_DIR/mako/scripts/install
+    $SCRIPT_DIR/rofi/scripts/install
+    $SCRIPT_DIR/waybar/scripts/install
+elif [[ "$(uname)" == "Darwin" ]]; then
+    $SCRIPT_DIR/skhd/scripts/install
+fi
