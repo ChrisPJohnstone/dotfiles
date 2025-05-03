@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 SCRIPT_PATH=$(readlink -f "${BASH_SOURCE}")
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
-CONFIG_DIR=$(dirname "$SCRIPT_DIR")
-ln -sf $CONFIG_DIR $HOME/.config/mako
+ln -sf $SCRIPT_DIR $HOME/.config/waybar

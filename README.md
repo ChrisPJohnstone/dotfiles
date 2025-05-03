@@ -4,8 +4,8 @@ This repository contains my dotfiles for various applications and tools that I u
 
 # Setup/Usage
 
-- Each tool has a `scripts/install` script which will put the config where it needs to be for usage. Note that this will override any existing files.
-- The `install_all` script will run the `{tool}/scripts/install` for all tools relevant to your OS.
+- Each tool has a `install` script which will put the config where it needs to be for usage. Note that this will override any existing files.
+- The `install_all` script will run the `{tool}/install` for all tools relevant to your OS.
 - Each tool has a `README.md` which will tell you more about what it does and how to use it
 
 # Tool Overview
