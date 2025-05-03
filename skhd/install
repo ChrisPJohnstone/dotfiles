@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 SCRIPT_PATH=$(readlink -f "${BASH_SOURCE}")
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
-ln -sf $SCRIPT_DIR $HOME/.config/skhd
+ln -sfn $SCRIPT_DIR $HOME/.config/skhd
