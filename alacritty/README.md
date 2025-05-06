@@ -8,5 +8,5 @@ There's not much to say on this one, it's a terminal. You can update `alacritty.
 
 # Links
 
-- [alacritty](https://alacritty.org/) Terminal Emulator
+- [alacritty](https://alacritty.org/)
 - [configuration](https://alacritty.org/config-alacritty.html)
