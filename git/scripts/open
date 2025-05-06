@@ -22,7 +22,7 @@ function build_url() {
     fi
 
     # Get fields we need from remote
-    fields=$(echo "$remote" | sed 's/git@\(.*\):\(.*\)\/\(.*\)/\1 \2 \3/')
+    fields=$(echo "$remote" | sed 's/git@\(.*\):\(.*\)\/\([^\.]*\)\(\.git\)\?/\1 \2 \3/')
     read -r site user repo <<< "$fields"
 
     # Get git hash
