@@ -2,6 +2,7 @@
 declare -A options=(
     ["Reboot"]="reboot"
     ["Shutdown"]="shutdown now"
+    ["Log Out"]="hyprctl dispatch exit"
 )
 
 input=$(printf '%s\n' "${!options[@]}" | rofi -i -dmenu -p "Power")
