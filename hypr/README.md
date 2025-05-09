@@ -1,6 +1,7 @@
 # Overview
 
-Hyprland is a dynamic window manager
+- Hyprland is a dynamic window manager.
+- Hyprpaper is a wallpaper utility for hyprland.
 
 # Usage
 
@@ -32,5 +33,6 @@ Hyprland is a dynamic window manager
 
 # Links
 
-- [hyprland](https://hyprland.org/)
-- [configuration](https://wiki.hyprland.org/Configuring/)
+- [Hyprland](https://hyprland.org/)
+- [Hyprland Configuration](https://wiki.hyprland.org/Configuring/)
+- [Hyprpaper](https://wiki.hyprland.org/Hypr-Ecosystem/hyprpaper/)
