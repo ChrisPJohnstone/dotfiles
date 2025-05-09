@@ -3,6 +3,7 @@
 @define-color highlight #96CDFB;
 @define-color alert     #ed8796;
 
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
@@ -10,12 +11,12 @@
 }
 
 window#waybar {
-    background-color: @grey;
+    background: transparent;
     color: @text;
 }
 
 #custom-launcher,
-#workspaces button,
+#workspaces,
 #clock,
 #tray,
 #custom-vpn,
@@ -25,10 +26,39 @@ window#waybar {
 #temperature,
 #custom-gpu,
 #pulseaudio {
+    background-color: @grey;
     color: @text;
     border: none;
     border-radius: 0;
-    padding: 0 5px;
+    padding: 0 5;
+    margin: 5 0 5 0;
+}
+
+#custom-launcher,
+#clock,
+#tray {
+    border-radius: 10;
+    padding: 0 10 0 10;
+    margin-left: 5;
+    margin-right: 5;
+}
+
+#workspaces {
+    border-radius: 10;
+}
+
+#workspaces button {
+    padding: 0 5;
+    margin: 0;
+}
+
+#custom-vpn {
+    border-radius: 10 0 0 10;
+}
+
+#pulseaudio {
+    border-radius: 0 10 10 0;
+    margin-right: 5;
 }
 
 #custom-launcher:hover,
