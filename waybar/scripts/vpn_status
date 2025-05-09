@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+CHECK=
+CROSS=
+
+status=$(piactl get connectionstate)
+[[ ${status:0:1} == 'C' ]] && echo $CHECK || echo $CROSS

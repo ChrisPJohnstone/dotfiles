@@ -36,8 +36,8 @@
         "spacing": 5
     },
     "custom/vpn": {
-        "exec": "piactl get connectionstate",
-        "format": "VPN: {}",
+        "exec": "$HOME/.config/waybar/scripts/vpn_status",
+        "format": "VPN {}",
         "interval": 1,
         "on-click": "$HOME/.config/hypr/scripts/pia_vpn_util"
 
