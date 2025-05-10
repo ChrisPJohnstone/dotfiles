@@ -6,11 +6,6 @@ return {
     "requirements.txt",
   },
   settings = {
-    textDocument = {
-      publishDiagnostics = {
-        virtual_text = true,
-      },
-    },
     python = {
       analysis = {
         autoSearchPaths = true,
