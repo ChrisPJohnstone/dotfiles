@@ -2,7 +2,6 @@
     "layer": "top",
     "position": "top",
     "modules-left": [
-        "custom/launcher",
         "hyprland/workspaces"
     ],
     "modules-center": [
@@ -18,10 +17,6 @@
         "custom/gpu",
         "pulseaudio"
     ],
-    "custom/launcher": {
-        "format": "",
-        "on-click": "rofi -show drun"
-    },
     "hyprland/workspaces": {
         "all-outputs": false,
         "warp-on-scroll": false,

@@ -15,7 +15,6 @@ window#waybar {
     color: @text;
 }
 
-#custom-launcher,
 #workspaces,
 #clock,
 #tray,
@@ -34,7 +33,7 @@ window#waybar {
     margin: 5 0 5 0;
 }
 
-#custom-launcher,
+#workspaces,
 #clock,
 #tray {
     border-radius: 10;
@@ -62,7 +61,6 @@ window#waybar {
     margin-right: 5;
 }
 
-#custom-launcher:hover,
 #workspaces button:hover,
 #clock:hover,
 #custom-vpn:hover,
