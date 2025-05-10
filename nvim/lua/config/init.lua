@@ -1,5 +1,0 @@
-require("config.bindings")
-require("config.lazy")
-require("config.lsp")
-require("config.miscellaneous")
-require("config.visuals")

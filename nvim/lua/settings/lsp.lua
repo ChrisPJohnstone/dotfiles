@@ -1,3 +1,4 @@
+-- Shared settings
 vim.lsp.config(
   '*',
   {
@@ -12,4 +13,5 @@ vim.lsp.config(
   }
 )
 
+-- Show warnings in-line
 vim.diagnostic.config({virtual_text = true})
