@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 declare -A options=(
+    ["Lock"]="hyprlock"
+    ["Log Out"]="hyprctl dispatch exit"
     ["Reboot"]="reboot"
     ["Shutdown"]="shutdown now"
-    ["Log Out"]="hyprctl dispatch exit"
 )
 
 input=$(printf '%s\n' "${!options[@]}" | rofi -i -dmenu -p "Power")
