@@ -23,3 +23,4 @@
     newbranch = !git checkout develop && git pull && git checkout -b $1
     update = !git checkout develop && git pull && git checkout - && git merge develop
     open = !$HOME/.config/git/scripts/open
+    tickets-in-branch = !$HOME/.config/git/scripts/tickets_in_branch

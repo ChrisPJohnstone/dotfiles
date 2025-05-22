@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+LATEST_HASH=$(git rev-list --tags --max-count=1)
+LATEST_TAG=$(git describe --tags $LATEST_HASH)
+git log --oneline $LATEST_TAG...@ | grep "MDATA" | sed -E 's/.*(MDATA-[0-9]+).*/\1/g' | sort | uniq
