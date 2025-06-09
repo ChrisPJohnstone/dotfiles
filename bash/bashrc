@@ -76,6 +76,15 @@ function rsm() {
     done
 }
 
+function ticket() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: ticket <ticket-number>"
+        return 1
+    fi
+    url="https://keyloop.atlassian.net/browse/MDATA-$1"
+    ${BROWSER} "$url" &> /dev/null
+}
+
 # ------------------------------ SHELL SETTINGS ------------------------------ #
 # For future me when half this stuff doesn't exist on the internet: `man bash`
 
