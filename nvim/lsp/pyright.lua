@@ -7,6 +7,11 @@ return {
   },
   settings = {
     python = {
+      textDocument = {
+        publishDiagnostics = {
+          virtual_text = true,
+        },
+      },
       analysis = {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,

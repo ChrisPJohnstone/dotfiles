@@ -1,8 +1,5 @@
 return {
   cmd = {"terraform-ls", "serve"},
-  filetypes = {"terraform", "tf"},
-  root_markers = {
-    ".terraform",
-    ".git",
-  }
+  filetypes = {"tf", "terraform", "terraform-vars"},
+  root_markers = {".terraform", ".git"},
 }
