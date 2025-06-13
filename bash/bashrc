@@ -109,7 +109,6 @@ PS1+="\[$(tput sgr0)\] "
 
 # History settings
 shopt -s histappend
-PROMPT_COMMAND="history -a; history -n"
 HISTCONTROL=ignoredups
 HISTSIZE=10000
 HISTFILE=$HOME/.histfile
