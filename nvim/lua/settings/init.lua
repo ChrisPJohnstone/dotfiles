@@ -5,6 +5,8 @@ require("settings.line_wrapping")
 require("settings.lsp")
 require("settings.status_line")
 require("settings.tab")
+require("settings.wildignore")
+require("settings.wildmenu")
 
 -- Enable syntax highlighting
 vim.opt.syntax = on
