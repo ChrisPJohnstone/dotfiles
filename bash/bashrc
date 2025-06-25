@@ -13,7 +13,7 @@ fi
 export EDITOR='nvim'
 
 # Settings to pass to `less` (e.g. `git diff`, `man`)
-export LESS='-RKFiI --jump-target .5'
+export LESS='-RKiI --jump-target .5'
 
 # --------------------------- FUNCTIONS & ALIASES ---------------------------- #
 
