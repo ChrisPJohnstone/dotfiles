@@ -6,7 +6,6 @@ require("settings.lsp")
 require("settings.splits")
 require("settings.status_line")
 require("settings.tab")
-require("settings.terminal")
 require("settings.wildignore")
 require("settings.wildmenu")
 
