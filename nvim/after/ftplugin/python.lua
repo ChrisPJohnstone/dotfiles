@@ -9,10 +9,4 @@ vim.opt_local.colorcolumn = "80"
 vim.g.pyindent_open_paren = 4
 
 -- Run pytest
-vim.keymap.set("n", "<leader>t", function()
-  local path = vim.fn.expand('%:p')
-  vim.cmd.new()
-  vim.cmd.wincmd("J")
-  vim.cmd.terminal()
-  vim.fn.chansend(vim.bo.channel, { "pytest " .. path})
-end)
+vim.keymap.set("n", "<leader>t", ":w | !pytest %<CR>", {noremap = true})
