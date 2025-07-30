@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+$1 "www.youtube.co.uk/results?search_query=$2"
