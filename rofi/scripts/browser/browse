@@ -8,6 +8,7 @@ YOUTUBE="Youtube"
 
 declare -A sites=(
     ["${AMAZON_PRIME_VIDEO}"]="www.amazon.co.uk/gp/video/storefront/"
+    ["Channel 4"]="www.channel4.com/"
     ["Chess"]="www.chess.com"
     ["${DISNEY_PLUS}"]="www.disneyplus.com"
     ["Github"]="www.github.com/ChrisPJohnstone"
