@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+declare -A SINKS
+while read -r LINE; do
+    NAME="${LINE%:*}"
+    DESCRIPTION="${LINE#*:}"
+    SINKS["${DESCRIPTION}"]="${NAME}"
+done <<< "$(pactl list sinks | grep -e Name -e Description | paste -d " "  - - | sed -E 's/\s*Name: ([^ ]*)\s*Description: (.*)/\1:\2/')"
+
+SINK_DESCRIPTION=$(printf '%s\n' "${!SINKS[@]}" | rofi -i -dmenu -p "Sound")
+SINK_NAME="${SINKS[$SINK_DESCRIPTION]}"
+pactl set-default-sink "${SINK_NAME}"
