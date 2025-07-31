@@ -29,6 +29,7 @@
 
 ## Other
 [S] + S             Screenshot
+[S] + O             Choose default sound output
 [S] + V             Connect/Disconnect from VPN
 
 # Links
