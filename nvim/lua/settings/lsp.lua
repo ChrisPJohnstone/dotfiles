@@ -6,6 +6,9 @@ vim.lsp.config("*", {
 -- Show warnings in-line
 vim.diagnostic.config({ virtual_text = true })
 
+-- Lua LSP
+vim.lsp.enable("luals")
+
 -- Python LSP
 vim.lsp.enable("pyright")
 
@@ -14,6 +17,3 @@ vim.lsp.enable("bashls")
 
 -- Terraform LSP
 vim.lsp.enable("terraformls")
-
--- Lua LSP
-vim.lsp.enable("luals")

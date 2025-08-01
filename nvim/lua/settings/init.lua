@@ -1,3 +1,4 @@
+require("settings.auto_format")
 require("settings.filetypes")
 require("settings.lazy")
 require("settings.line_numbers")
@@ -10,7 +11,7 @@ require("settings.wildignore")
 require("settings.wildmenu")
 
 -- Enable syntax highlighting
-vim.opt.syntax = on
+vim.cmd("syntax on")
 
 -- Centre cursor on screen
 vim.opt.scrolloff = 999
