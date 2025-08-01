@@ -1,31 +1,30 @@
+#!/usr/bin/env bash
+
 # This script takes a path as an optional argument.
 # If no argument is provided, it defaults to the home directory.
 # It will determine the bottom directory of the path and attach to that session.
 # If the session does not exist, it will create a new tmux session with that name and path.
-
-#!/usr/bin/env bash
-if [ -z $1 ]
+if [ -z "${1}" ]
 then
-    path="$HOME"
-    session_name="Home"
+    FILEPATH="${HOME}"
+    SESSION_NAME="Home"
 else
     if [[ $1 == */ ]]; then
-        path="$PWD/${1:0:${#1}-1}"
+        FILEPATH="$PWD/${1:0:${#1}-1}"
     else
-        path="$PWD/$1"
+        FILEPATH="$PWD/$1"
     fi
-    session_name="${path##*/}"
+    SESSION_NAME="${FILEPATH##*/}"
 fi
 
-tmux has-session -t "$session_name"
-if [ $? != 0 ]
+if [ ! "$(tmux has-session -t "${SESSION_NAME}")" ]
 then
-    tmux new-session -d -s "$session_name" -c "$path" -n "Home"
+    tmux new-session -d -s "${SESSION_NAME}" -c "${FILEPATH}" -n "Home"
 fi
 
-if [ -z $TMUX ]
+if [ -z "${TMUX}" ]
 then
-    tmux attach-session -t "$session_name:1"
+    tmux attach-session -t "${SESSION_NAME}:1"
 else
-    tmux switch-client -t "$session_name:1"
+    tmux switch-client -t "${SESSION_NAME}:1"
 fi
