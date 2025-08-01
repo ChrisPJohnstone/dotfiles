@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-$1 "duckduckgo.com/$2"
+"${1}" "duckduckgo.com/${2}"

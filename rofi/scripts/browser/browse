@@ -6,7 +6,7 @@ DISNEY_PLUS="Disney+"
 NETFLIX="Netflix"
 YOUTUBE="Youtube"
 
-declare -A sites=(
+declare -A SITES=(
     ["${AMAZON_PRIME_VIDEO}"]="www.amazon.co.uk/gp/video/storefront/"
     ["Channel 4"]="www.channel4.com/"
     ["Chess"]="www.chess.com"
@@ -20,25 +20,25 @@ declare -A sites=(
     ["Teams"]="teams.live.com"
     [${YOUTUBE}]="www.youtube.com"
 )
-declare -A follow_ups=(
+declare -A FOLLOW_UPS=(
     ["${AMAZON_PRIME_VIDEO}"]="${SCRIPT_DIR}/browser/search_prime_video"
     ["${NETFLIX}"]="${SCRIPT_DIR}/browser/search_netflix"
     ["${YOUTUBE}"]="${SCRIPT_DIR}/browser/search_youtube"
 )
-declare -A open_scripts=(
+declare -A OPEN_SCRIPTS=(
     ["${DISNEY_PLUS}"]="${SCRIPT_DIR}/browser/open_with_vpn_off"
 )
 
-input=$(printf '%s\n' "${!sites[@]}" | rofi -i -dmenu -p "Browse")
-if [[ -z ${input} ]]; then
-    exit "Escape"
-elif [[ -z "${sites[${input}]}" ]]; then
-    ${SCRIPT_DIR}/browser/search_ddg $1 "${input}"
-elif [[ -n "${follow_ups[${input}]}" ]]; then
-    secondary_input=$(${SCRIPT_DIR}/input ${input})
-    eval "${follow_ups[${input}]} $1 \"${secondary_input}\""
-elif [[ -n "${open_scripts[${input}]}" ]]; then
-    eval "${open_scripts[${input}]} $1 ${sites[${input}]}"
+INPUT=$(printf '%s\n' "${!SITES[@]}" | rofi -i -dmenu -p "Browse")
+if [[ -z ${INPUT} ]]; then
+    exit 1
+elif [[ -z "${SITES[${INPUT}]}" ]]; then
+    "${SCRIPT_DIR}/browser/search_ddg" "$1" "${INPUT}"
+elif [[ -n "${FOLLOW_UPS[${INPUT}]}" ]]; then
+    secondary_input=$("${SCRIPT_DIR}/input" "${INPUT}")
+    eval "${FOLLOW_UPS[${INPUT}]} $1 \"${secondary_input}\""
+elif [[ -n "${OPEN_SCRIPTS[${INPUT}]}" ]]; then
+    eval "${OPEN_SCRIPTS[${INPUT}]} $1 ${SITES[${INPUT}]}"
 else
-    $1 "${sites[${input}]}"
+    $1 "${SITES[${INPUT}]}"
 fi

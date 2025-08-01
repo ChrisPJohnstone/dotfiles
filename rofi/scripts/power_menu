@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-declare -A options=(
+declare -A OPTIONS=(
     ["Lock"]="hyprlock"
     ["Log Out"]="hyprctl dispatch exit"
     ["Reboot"]="reboot"
     ["Shutdown"]="shutdown now"
 )
 
-input=$(printf '%s\n' "${!options[@]}" | rofi -i -dmenu -p "Power")
-[ -n "${options[${input}]}" ] && eval "${options[${input}]}" 
+input=$(printf '%s\n' "${!OPTIONS[@]}" | rofi -i -dmenu -p "Power")
+[ -n "${OPTIONS[${input}]}" ] && eval "${OPTIONS[${input}]}" 
