@@ -9,7 +9,7 @@ vim.keymap.set("n", "<C-W><C-l>", "<C-W>>", { noremap = true })
 
 -- Open terminal in bottom split
 vim.keymap.set("n", "<C-W>t", function()
-	vim.cmd.new()
-	vim.cmd.wincmd("J")
-	vim.cmd.term()
+  vim.cmd.new()
+  vim.cmd.wincmd("J")
+  vim.cmd.term()
 end)

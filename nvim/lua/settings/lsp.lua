@@ -1,6 +1,6 @@
 -- Shared settings
 vim.lsp.config("*", {
-	root_markers = { ".git" },
+  root_markers = { ".git" },
 })
 
 -- Show warnings in-line
