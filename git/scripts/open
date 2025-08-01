@@ -1,50 +1,54 @@
 #!/usr/bin/env bash
 function _build_github_url() {
-    read -r site user repo hash path <<< $@
-    local url="https://www.$site/$user/$repo/tree/$hash"
-    [[ -z $path ]] && echo $url || echo "$url/$path"
+    local SITE USER REPO HASH FILEPATH URL
+    read -r SITE USER REPO HASH FILEPATH <<< "${@}"
+    URL="https://www.${SITE}/${USER}/${REPO}/tree/${HASH}"
+    [[ -z ${FILEPATH} ]] && echo "${URL}" || echo "$URL/$FILEPATH"
     return 0
 }
 
 function _build_bitbucket_url() {
-    read -r site user repo hash path <<< $@
-    local url="https://www.$site/$user/$repo/src/$hash"
-    [[ -z $path ]] && echo $url || echo "$url/$path"
+    local SITE USER REPO HASH FILEPATH URL
+    read -r SITE USER REPO HASH FILEPATH <<< "${@}"
+    URL="https://www.${SITE}/${USER}/${REPO}/src/${HASH}"
+    [[ -z ${FILEPATH} ]] && echo "${URL}" || echo "${URL}/${FILEPATH}"
     return 0
 }
 
 function build_url() {
+    local REMOTE FIELDS HASH FILEPATH SITE USER REPO ARGS
+
     # Get remote repository
-    local remote=$(git config --get remote.origin.url)
-    if [[ -z "$remote" ]]; then
+    REMOTE="$(git config --get remote.origin.url)"
+    if [[ -z "${REMOTE}" ]]; then
       echo "No remote URL found. Please check your git configuration."
       return 1
     fi
 
     # Get fields we need from remote
-    fields=$(echo "$remote" | sed 's/git@\(.*\):\(.*\)\/\([^\.]*\)\(\..*\)\{0,1\}/\1 \2 \3/')
-    read -r site user repo <<< "$fields"
+    FIELDS=$(echo "${REMOTE}" | sed 's/git@\(.*\):\(.*\)\/\([^\.]*\)\(\..*\)\{0,1\}/\1 \2 \3/')
+    read -r SITE USER REPO <<< "${FIELDS}"
 
     # Get git hash
-    local hash=$(git rev-parse HEAD)
+    HASH=$(git rev-parse HEAD)
 
     # Get path
-    local path=$1
+    FILEPATH=$1
     # TODO: Expand this to support being called from anywhere other than repo root
 
     # Build the URL based on the site
-    args=($site $user $repo $hash $path)
-    if [[ $site = "github.com" ]]; then
-        _build_github_url "${args[@]}"
+    ARGS=("${SITE}" "${USER}" "${REPO}" "${HASH}" "${FILEPATH}")
+    if [[ "${SITE}" = "github.com" ]]; then
+        _build_github_url "${ARGS[@]}"
         return 0
-    elif [[ $site = "bitbucket.org" ]]; then
-        _build_bitbucket_url "${args[@]}"
+    elif [[ "${SITE}" = "bitbucket.org" ]]; then
+        _build_bitbucket_url "${ARGS[@]}"
         return 0
     fi
-    echo "Unsupported site: $site"
+    echo "Unsupported site: ${SITE}"
     return 1
 }
 
 # Open the URL in the default browser
-url=$(build_url "$1")
-$BROWSER "$url"
+URL=$(build_url "$1")
+$BROWSER "${URL}"
