@@ -1,5 +1,5 @@
 -- Set status bar
-vim.opt.statusline = "[%f] %y %m %= [Column: %v]";
+vim.opt.statusline = "[%f] %y %m %= [Column: %v]"
 
 -- [%f]   [filename]
 -- %y     File type (already in square brackets)
