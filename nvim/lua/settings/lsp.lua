@@ -12,5 +12,11 @@ vim.diagnostic.config({virtual_text = true})
 -- Python LSP
 vim.lsp.enable("pyright")
 
+-- Bash LSP
+vim.lsp.enable("bashls")
+
 -- Terraform LSP
 vim.lsp.enable("terraformls")
+
+-- Lua LSP
+vim.lsp.enable("luals")

@@ -3,3 +3,4 @@ return {
   filetypes = {"tf", "terraform", "terraform-vars"},
   root_markers = {".terraform", ".git"},
 }
+-- Dependencies `terraform-ls
