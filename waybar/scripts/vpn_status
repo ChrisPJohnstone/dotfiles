@@ -2,5 +2,5 @@
 CHECK=
 CROSS=
 
-status=$(piactl get connectionstate)
-[[ ${status:0:1} == 'C' ]] && echo $CHECK || echo $CROSS
+STATUS=$(piactl get connectionstate)
+[[ "${STATUS:0:1}" == 'C' ]] && echo "${CHECK}" || echo "${CROSS}"
