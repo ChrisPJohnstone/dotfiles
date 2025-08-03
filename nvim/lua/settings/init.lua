@@ -1,4 +1,3 @@
-require("settings.auto_format")
 require("settings.filetypes")
 require("settings.lazy")
 require("settings.line_numbers")
