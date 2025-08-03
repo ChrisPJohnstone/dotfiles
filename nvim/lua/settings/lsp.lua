@@ -4,7 +4,10 @@ vim.lsp.config("*", {
 })
 
 -- Show warnings in-line
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+  virtual_text = true,
+  virtual_lines = true,
+})
 
 -- Lua LSP
 vim.lsp.enable("luals")
