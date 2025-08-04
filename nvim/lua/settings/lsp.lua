@@ -9,17 +9,13 @@ vim.diagnostic.config({
   virtual_lines = true,
 })
 
--- Lua LSP
-vim.lsp.enable("luals")
-
--- Python LSP
-vim.lsp.enable("pyright")
-
--- Bash LSP
-vim.lsp.enable("bashls")
-
--- Terraform LSP
-vim.lsp.enable("terraformls")
+-- Enable LSPs
+vim.lsp.enable({
+  "bashls",
+  "luals",
+  "pyright",
+  "terraformls",
+})
 
 -- Autoformat
 vim.api.nvim_create_autocmd("LspAttach", {
