@@ -22,7 +22,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
 # Calls a custom script in this repo
-alias tcd="${HOME}/.config/tmux/scripts/start_tmux_session"
+alias tcd='${HOME}/.config/tmux/scripts/start_tmux_session'
 
 # Determine git branch at pwd
 function parse_git_branch() {
@@ -51,24 +51,24 @@ alias safegrep='grep \
 
 # Finds a state machine whose name contains $1 and follows it's execution
 function rsm() {
-    state_machine=$(aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`$1\`)]" --output text | cut -f 3)
-    count=$(echo -n "$state_machine" | grep -c "^")
-    if [[ $count == 0 ]]; then
+    STATE_MACHINE=$(aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`$1\`)]" --output text | cut -f 3)
+    COUNT=$(echo -n "${STATE_MACHINE}" | grep -c "^")
+    if [[ "${COUNT}" == 0 ]]; then
         echo "No state machine found with name containing $1"
         return
-    elif [[ $count > 1 ]]; then
+    elif [[ "${COUNT}" -gt 1 ]]; then
         echo "Multiple state machines found with name containing $1"
-        printf '%s\n' $state_machine
+        printf '%s\n' "${STATE_MACHINE}"
         return
     fi
-    execution=$(aws stepfunctions start-execution --state-machine-arn $state_machine --output text | cut -f 1)
+    EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --output text | cut -f 1)
     while true; do
-        execution_status=$(aws stepfunctions describe-execution --execution-arn $execution --query "status" --output text)
+        execution_status=$(aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "status" --output text)
         if [[ $execution_status == "SUCCEEDED" ]]; then
-            echo "Execution $execution succeeded"
+            echo "Execution ${EXECUTION} succeeded"
             break
         elif [[ $execution_status == "FAILED" ]]; then
-            echo "Execution $execution failed"
+            echo "Execution ${EXECUTION} failed"
             break
         fi
         echo "Execution is $execution_status"
@@ -81,8 +81,8 @@ function ticket() {
         echo "Usage: ticket <ticket-number>"
         return 1
     fi
-    url="https://keyloop.atlassian.net/browse/MDATA-$1"
-    ${BROWSER} "$url" &> /dev/null
+    URL="https://keyloop.atlassian.net/browse/MDATA-$1"
+    ${BROWSER} "${URL}" &> /dev/null
 }
 
 # ------------------------------ SHELL SETTINGS ------------------------------ #
