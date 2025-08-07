@@ -12,6 +12,7 @@ vim.diagnostic.config({
 -- Enable LSPs
 vim.lsp.enable({
   "bash",
+  "json",
   "lua",
   "python",
   "terraform",
