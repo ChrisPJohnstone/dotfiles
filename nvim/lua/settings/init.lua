@@ -10,7 +10,7 @@ require("settings.wildignore")
 require("settings.wildmenu")
 
 -- Set colorscheme
-vim.cmd("colorscheme zaibatsu")
+vim.cmd("colorscheme sorbet")
 
 -- Enable syntax highlighting
 vim.cmd("syntax on")
