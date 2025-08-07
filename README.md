@@ -15,7 +15,7 @@ This section provides a brief overview of the tools and applications I use, cate
 ## Shared
 
 Tools that I use across all operating systems.
-- [alacritty](https://alacritty.org/) Terminal Emulator
+- [kitty](https://sw.kovidgoyal.net/kitty/) Terminal Emulator
 - [bash](https://www.gnu.org/software/bash/) Shell
 - [git](https://git-scm.com/) Version Control System
 - [nvim](https://neovim.io/) Primary text editor

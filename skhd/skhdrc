@@ -1,4 +1,4 @@
 # App Selection
 ctrl - 1 : open -a "Firefox"
-ctrl - 2 : open -a "Alacritty"
+ctrl - 2 : open -a "Kitty"
 ctrl - 3 : open -a "Microsoft Teams"

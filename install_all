@@ -2,9 +2,9 @@
 SCRIPT_PATH=$(readlink -f "${BASH_SOURCE[0]}")
 SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 
-"${SCRIPT_DIR}/alacritty/install"
 "${SCRIPT_DIR}/bash/install"
 "${SCRIPT_DIR}/git/install"
+"${SCRIPT_DIR}/kitty/install"
 "${SCRIPT_DIR}/nvim/install"
 "${SCRIPT_DIR}/tmux/install"
 "${SCRIPT_DIR}/vim/install"
