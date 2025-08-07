@@ -9,9 +9,6 @@ require("settings.tab")
 require("settings.wildignore")
 require("settings.wildmenu")
 
--- Set colorscheme
-vim.cmd("colorscheme zaibatsu")
-
 -- Enable syntax highlighting
 vim.cmd("syntax on")
 
