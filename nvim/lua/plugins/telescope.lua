@@ -1,17 +1,14 @@
 return {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.6",
   dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     require("telescope").setup({
       pickers = {
-        colorscheme = {
-          theme = "ivy",
-          enable_preview = true,
-        },
-        find_files = {
-          hidden = true,
-        },
+        colorscheme = { theme = "ivy", enable_preview = true },
+        find_files = { theme = "ivy", hidden = true },
+        buffers = { theme = "ivy" },
+        help_tags = { theme = "ivy" },
+        live_grep = { theme = "ivy" },
       },
     })
     local builtin = require("telescope.builtin")
