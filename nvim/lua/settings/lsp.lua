@@ -11,10 +11,10 @@ vim.diagnostic.config({
 
 -- Enable LSPs
 vim.lsp.enable({
-  "bashls",
-  "luals",
-  "pyright",
-  "terraformls",
+  "bash",
+  "lua",
+  "python",
+  "terraform",
 })
 
 -- Autoformat
