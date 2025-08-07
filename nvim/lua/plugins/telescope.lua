@@ -5,6 +5,10 @@ return {
   config = function()
     require("telescope").setup({
       pickers = {
+        colorscheme = {
+          theme = "ivy",
+          enable_preview = true,
+        },
         find_files = {
           hidden = true,
         },
