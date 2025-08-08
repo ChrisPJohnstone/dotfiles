@@ -33,12 +33,13 @@ There's far too many settings & preferences to cover here so I'm just gonna cove
 # Links
 
 - [neovim](https://neovim.io/)
-- [colorizer](https://github.com/norcalli/nvim-colorizer.lua) Highlights colour words, rgb values & hex codes their colour
-- [commentary](https://github.com/tpope/vim-commentary) Enables `gc` for commenting code
 - [copilot](https://github.com/github/copilot.vim) AI code assistant
 - [fugitive](https://github.com/tpope/vim-fugitive) Git client
 - [mason](https://github.com/williamboman/mason.nvim) Third party package manager
+- [mini-comment](https://github.com/echasnovski/mini.comment) Creates shortcuts for commenting and uncommenting code
+- [mini-hipatterns](https://github.com/echasnovski/mini.hipatterns) Highlights color codes and other patterns
+- [mini-surround](https://github.com/echasnovski/mini.surround) Creates shortcuts for handling surrounding characters (e.g. brackets)
+- [mini-trailspace](https://github.com/echasnovski/mini.trailspace) Highlights trailing spaces
 - [oil](https://github.com/stevearc/oil.nvim) netrw replacement
-- [surround](https://github.com/tpope/vim-surround) Encasing editing (e.g. change "test" to 'test' with a `cs"'`)
 - [telescope](https://github.com/nvim-telescope/telescope.nvim) Fuzzy finder
 - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) Treesitter for nvim
