@@ -99,6 +99,10 @@ bind -m vi-insert '"\C-e": edit-and-execute-command'
 # Resize the shell to fit the window after actions
 shopt -s checkwinsize
 
+# Enable ** for recursive glob
+shopt -s globstar
+shopt -s dotglob
+
 # Customise prompt
 VIRTUAL_ENV_DISABLE_PROMPT=1
 PS1="\[$(tput rev)\]"
