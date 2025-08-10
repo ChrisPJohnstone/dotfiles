@@ -9,7 +9,7 @@ else
     echo "Unknown OS, please set BROWSER manually or update bashrc"
 fi
 
-# Editor for programs to default do (e.g. `git`) 
+# Editor for programs to default do (e.g. `git`)
 export EDITOR='nvim'
 
 # Settings to pass to `less` (e.g. `git diff`, `man`)
