@@ -103,9 +103,6 @@ HISTSIZE=10000
 HISTFILE=$HOME/.histfile
 HISTIGNORE='ls:cd:fg:clear:exit'
 
-# Color the common prefix when listing completions
-bind 'set colored-completion-prefix on'
-
 # Ignore case for tab completion
 bind 'set completion-ignore-case on'
 
@@ -116,6 +113,10 @@ bind -m vi-command '"\e[A": history-search-backward'
 bind -m vi-command '"\e[B": history-search-forward'
 bind -m vi-insert '"\e[B": history-search-forward'
 bind -m vi-insert '"\e[B": history-search-forward'
+
+# Color the common prefix when listing completions
+bind 'set colored-completion-prefix on'
+bind 'set colored-stats on'
 
 # Enable ** for recursive glob
 shopt -s globstar
