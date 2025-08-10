@@ -103,9 +103,6 @@ HISTSIZE=10000
 HISTFILE=$HOME/.histfile
 HISTIGNORE='ls:cd:fg:clear:exit'
 
-# Ignore case for tab completion
-bind 'set completion-ignore-case on'
-
 # Change up/down behaviour to go through history *based on what is already in the line*
 bind -m vi-command 'k: history-search-backward'
 bind -m vi-command 'j: history-search-forward'
@@ -113,6 +110,12 @@ bind -m vi-command '"\e[A": history-search-backward'
 bind -m vi-command '"\e[B": history-search-forward'
 bind -m vi-insert '"\e[B": history-search-forward'
 bind -m vi-insert '"\e[B": history-search-forward'
+
+# Ignore case for tab completion
+bind 'set completion-ignore-case on'
+
+# Treat `-` and `_` as equivalent for tab completion
+bind 'set completion-map-case on'
 
 # Color the common prefix when listing completions
 bind 'set colored-completion-prefix on'
