@@ -103,6 +103,9 @@ HISTSIZE=10000
 HISTFILE=$HOME/.histfile
 HISTIGNORE='ls:cd:fg:clear:exit'
 
+# Color the common prefix when listing completions
+bind 'set colored-completion-prefix on'
+
 # Ignore case for tab completion
 bind 'set completion-ignore-case on'
 
