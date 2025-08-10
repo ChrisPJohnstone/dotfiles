@@ -106,6 +106,16 @@ HISTIGNORE='ls:cd:fg:clear:exit'
 # Ignore case for tab completion
 bind 'set completion-ignore-case on'
 
+# Change tab (and shift-tab) to menu complete
+bind -m vi-insert 'TAB: menu-complete'
+bind -m vi-insert '"\e[Z": menu-complete-backward'
+
+# When tab complete doesn't have a definitive outcome show a list of options
+bind 'set show-all-if-ambiguous on'
+
+# On the first tab perform partial complete
+bind 'set menu-complete-display-prefix on'
+
 # Enable ** for recursive glob
 shopt -s globstar
 shopt -s dotglob
