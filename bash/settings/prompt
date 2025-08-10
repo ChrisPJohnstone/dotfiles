@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Disable virtual env auto injecting to prompt (we would rather do this manually)
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Change prompt color when in vi command mode
+bind 'set show-mode-in-prompt on'
+bind "set emacs-mode-string ''"
+bind "set vi-ins-mode-string "
+bind "set vi-cmd-mode-string $(tput setaf 5)"
+
+# Construct prompt
+PS1="$(tput rev)"
+PS1+="[\W]"
+PS1+="\$(prompt_git_branch)"
+PS1+="\$(prompt_virtual_env)"
+PS1+="\[$(tput sgr0)\] "

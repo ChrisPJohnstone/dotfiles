@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+alias tcd='${HOME}/.config/tmux/scripts/start_tmux_session'

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+function completion_cdk() {
+    COMPREPLY=()
+    declare -a COMMANDS=(
+        "ls"
+        "synth"
+        "deploy"
+        "acknowledge"
+    )
+
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+        COMPREPLY=($(compgen -W "${COMMANDS[*]}" -- "${COMP_WORDS[1]}"))
+        return
+    fi
+
+    local COMMAND="${COMP_WORDS[1]}"
+    if [[ ${COMMAND} == "deploy" ]] || [[ ${COMMAND} == "destroy" ]]; then
+        [ -d "cdk.out" ] && COMPREPLY=($(ls cdk.out/${COMP_WORDS[COMP_CWORD]}*.template.json 2> /dev/null | sed 's/cdk.out\/\(.*\)\.template\.json/\1/'))
+        return
+    fi
+}
+
+complete -F completion_cdk cdk

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+alias safegrep='grep \
+    --exclude-dir ".idea" \
+    --exclude-dir ".git" \
+    --exclude-dir ".serverless" \
+    --exclude-dir ".venv" \
+    --exclude-dir "__pycache__" \
+    --exclude-dir "cdk.out" \
+    --exclude-dir "node_modules" \
+    --exclude-dir "python_modules" \
+    --exclude-dir "venv" \
+'

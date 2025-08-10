@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+shopt -s histappend
+
+HISTCONTROL=ignoredups
+HISTSIZE=10000
+HISTFILE=$HOME/.histfile
+HISTIGNORE='ls:cd:fg:clear:exit'

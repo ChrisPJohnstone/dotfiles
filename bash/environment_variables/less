@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+export LESS='-RKiI --jump-target .5'

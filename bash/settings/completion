@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Ignore case for tab completion
+bind 'set completion-ignore-case on'
+
+# Treat `-` and `_` as equivalent for tab completion
+bind 'set completion-map-case on'
+
+# Color the common prefix when listing completions
+bind 'set colored-completion-prefix on'
+bind 'set colored-stats on'
+
+# Set one completion suggestion per row
+bind 'set completion-display-width 0'

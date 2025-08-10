@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+function prompt_virtual_env() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo " [${VIRTUAL_ENV##*/}]"
+    fi
+}

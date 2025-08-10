@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Change up/down behaviour to go through history *based on what is already in the line*
+bind -m vi-command 'k: history-search-backward'
+bind -m vi-command 'j: history-search-forward'
+bind -m vi-command '"\e[A": history-search-backward'
+bind -m vi-command '"\e[B": history-search-forward'
+bind -m vi-insert '"\e[B": history-search-forward'
+bind -m vi-insert '"\e[B": history-search-forward'

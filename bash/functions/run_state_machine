@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+function run_state_machine() {
+    STATE_MACHINE=$(aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`$1\`)]" --output text | cut -f 3)
+    COUNT=$(echo -n "${STATE_MACHINE}" | grep -c "^")
+    if [[ "${COUNT}" == 0 ]]; then
+        echo "No state machine found with name containing $1"
+        return
+    elif [[ "${COUNT}" -gt 1 ]]; then
+        echo "Multiple state machines found with name containing $1"
+        printf '%s\n' "${STATE_MACHINE}"
+        return
+    fi
+    EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --output text | cut -f 1)
+    while true; do
+        execution_status=$(aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "status" --output text)
+        if [[ $execution_status == "SUCCEEDED" ]]; then
+            echo "Execution ${EXECUTION} succeeded"
+            break
+        elif [[ $execution_status == "FAILED" ]]; then
+            echo "Execution ${EXECUTION} failed"
+            break
+        fi
+        echo "Execution is $execution_status"
+        sleep 5
+    done
+}
+
+alias rsm=run_state_machine

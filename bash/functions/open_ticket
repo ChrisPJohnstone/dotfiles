@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+function open_ticket() {
+    if [[ -z "$1" ]]; then
+        echo "Usage: ticket <ticket-number>"
+        return 1
+    fi
+    URL="https://keyloop.atlassian.net/browse/MDATA-$1"
+    ${BROWSER} "${URL}" &> /dev/null
+}

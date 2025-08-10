@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Enable vi like editing on the command line
+bind 'set editing-mode vi'
+
+# Enable ** for recursive glob
+shopt -s globstar
+shopt -s dotglob
+
+# Resize the shell to fit the window after actions
+shopt -s checkwinsize
