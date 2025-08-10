@@ -90,7 +90,7 @@ function ticket() {
 
 # Customise prompt
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-PS1="\[$(tput rev)\]"
+PS1="$(tput rev)"
 PS1+="[\W]"
 PS1+="\$(parse_git_branch)"
 PS1+="\$(parse_virtual_env)"
@@ -129,7 +129,12 @@ shopt -s globstar
 shopt -s dotglob
 
 # Enable vi like editing on the command line
-set -o vi
+bind 'set editing-mode vi'
+
+# Change prompt color when in command mode
+bind 'set show-mode-in-prompt on'
+bind "set vi-ins-mode-string "
+bind "set vi-cmd-mode-string $(tput setaf 5)"
 
 # Bind clear screen to Ctrl + L
 bind -m vi-command 'Control-l: clear-screen'
