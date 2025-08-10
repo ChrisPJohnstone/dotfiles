@@ -88,23 +88,8 @@ function ticket() {
 # ------------------------------ SHELL SETTINGS ------------------------------ #
 # For future me when half this stuff doesn't exist on the internet: `man bash`
 
-# Enable vi like editing on the command line
-set -o vi
-bind -m vi-command 'Control-l: clear-screen'
-bind -m vi-insert 'Control-l: clear-screen'
-
-# Bind `Ctrl+e` to open current command in editor and execute on closing
-bind -m vi-insert '"\C-e": edit-and-execute-command'
-
-# Resize the shell to fit the window after actions
-shopt -s checkwinsize
-
-# Enable ** for recursive glob
-shopt -s globstar
-shopt -s dotglob
-
 # Customise prompt
-VIRTUAL_ENV_DISABLE_PROMPT=1
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 PS1="\[$(tput rev)\]"
 PS1+="[\W]"
 PS1+="\$(parse_git_branch)"
@@ -120,6 +105,20 @@ HISTIGNORE='ls:cd:fg:clear:exit'
 
 # Ignore case for tab completion
 bind 'set completion-ignore-case on'
+
+# Enable ** for recursive glob
+shopt -s globstar
+shopt -s dotglob
+
+# Enable vi like editing on the command line
+set -o vi
+
+# Bind clear screen to Ctrl + L
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
+
+# Resize the shell to fit the window after actions
+shopt -s checkwinsize
 
 # ------------------------------- COMPLETIONS -------------------------------- #
 # COMP_WORDS is the line as an array
