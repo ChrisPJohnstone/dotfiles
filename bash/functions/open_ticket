@@ -7,3 +7,5 @@ function open_ticket() {
     URL="https://keyloop.atlassian.net/browse/MDATA-$1"
     ${BROWSER} "${URL}" &> /dev/null
 }
+
+alias ticket=open_ticket
