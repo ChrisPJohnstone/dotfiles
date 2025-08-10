@@ -118,6 +118,9 @@ bind -m vi-insert '"\e[B": history-search-forward'
 bind 'set colored-completion-prefix on'
 bind 'set colored-stats on'
 
+# Set one completion suggestion per row
+bind 'set completion-display-width 0'
+
 # Enable ** for recursive glob
 shopt -s globstar
 shopt -s dotglob
