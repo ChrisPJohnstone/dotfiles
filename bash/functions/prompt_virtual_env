@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-function prompt_virtual_env() {
-    [ -n "${VIRTUAL_ENV}" ] && echo " [${VIRTUAL_ENV##*/}]"
-}

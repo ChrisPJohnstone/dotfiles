@@ -3,15 +3,22 @@
 # Disable virtual env auto injecting to prompt (we would rather do this manually)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+# Set PROMPT_COMMAND
+function prompt_command() {
+    PROMPT_GIT_BRANCH=$(git branch 2> /dev/null | sed -n 's/^\* \(.*\)/ [\1]/p')
+    PROMPT_VENV=$([ -n "${VIRTUAL_ENV}" ] && echo " [${VIRTUAL_ENV##*/}]")
+}
+export PROMPT_COMMAND=prompt_command
+
+# Construct prompt
+PS1="$(tput rev)"
+PS1+="[\W]"
+PS1+="\${PROMPT_GIT_BRANCH}"
+PS1+="\${PROMPT_VENV}"
+PS1+="\[$(tput sgr0)\] "
+
 # Change prompt color when in vi command mode
 bind 'set show-mode-in-prompt on'
 bind "set emacs-mode-string ''"
 bind "set vi-ins-mode-string "
 bind "set vi-cmd-mode-string $(tput setaf 5)"
-
-# Construct prompt
-PS1="$(tput rev)"
-PS1+="[\W]"
-PS1+="\$(prompt_git_branch)"
-PS1+="\$(prompt_virtual_env)"
-PS1+="\[$(tput sgr0)\] "
