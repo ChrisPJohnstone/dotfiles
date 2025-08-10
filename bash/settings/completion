@@ -8,7 +8,9 @@ bind 'set completion-map-case on'
 
 # Color the common prefix when listing completions
 bind 'set colored-completion-prefix on'
+
+# Color files based on type
 bind 'set colored-stats on'
 
-# Set one completion suggestion per row
+# Have completion suggestions output on seperate rows
 bind 'set completion-display-width 0'
