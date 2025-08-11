@@ -1,7 +1,2 @@
-return {
-  "echasnovski/mini.comment",
-  version = "*",
-  config = function()
-    require("mini.comment").setup()
-  end,
-}
+vim.pack.add({"https://github.com/echasnovski/mini.comment"})
+require("mini.comment").setup()

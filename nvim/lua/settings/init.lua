@@ -1,5 +1,4 @@
 require("settings.filetypes")
-require("settings.lazy")
 require("settings.line_numbers")
 require("settings.line_wrapping")
 require("settings.lsp")

@@ -1,7 +1,2 @@
-return {
-  "echasnovski/mini.trailspace",
-  version = "*",
-  config = function()
-    require("mini.trailspace").setup()
-  end,
-}
+vim.pack.add({"https://github.com/echasnovski/mini.trailspace"})
+require("mini.trailspace").setup()
