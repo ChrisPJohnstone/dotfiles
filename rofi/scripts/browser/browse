@@ -16,6 +16,7 @@ declare -A SITES=(
     ["LinkedIn"]="www.linkedin.com"
     ["${NETFLIX}"]="www.netflix.com"
     ["Outlook"]="outlook.live.com"
+    ["Proton Mail"]="mail.proton.me/u/1/inbox"
     ["Reddit"]="www.reddit.com"
     ["Teams"]="teams.live.com"
     [${YOUTUBE}]="www.youtube.com"
