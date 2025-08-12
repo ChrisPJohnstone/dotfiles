@@ -10,7 +10,11 @@ function run_state_machine() {
         printf '%s\n' "${STATE_MACHINE}"
         return
     fi
-    EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --output text | cut -f 1)
+    if [[ -z "${2}" ]]; then
+        EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --output text | cut -f 1)
+    else
+        EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --input "${2}" --output text | cut -f 1)
+    fi
     while true; do
         EXECUTION_STATUS=$(aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "status" --output text)
         if [[ "${EXECUTION_STATUS}" == "SUCCEEDED" ]]; then
