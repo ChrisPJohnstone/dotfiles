@@ -12,15 +12,16 @@ function run_state_machine() {
     fi
     EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --output text | cut -f 1)
     while true; do
-        execution_status=$(aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "status" --output text)
-        if [[ $execution_status == "SUCCEEDED" ]]; then
+        EXECUTION_STATUS=$(aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "status" --output text)
+        if [[ "${EXECUTION_STATUS}" == "SUCCEEDED" ]]; then
             echo "Execution ${EXECUTION} succeeded"
             break
-        elif [[ $execution_status == "FAILED" ]]; then
+        elif [[ "${EXECUTION_STATUS}" == "FAILED" ]]; then
             echo "Execution ${EXECUTION} failed"
+            aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --output table
             break
         fi
-        echo "Execution is $execution_status"
+        echo "Execution is ${EXECUTION_STATUS}"
         sleep 5
     done
 }
