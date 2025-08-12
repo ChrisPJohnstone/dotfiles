@@ -22,7 +22,7 @@ function run_state_machine() {
             break
         elif [[ "${EXECUTION_STATUS}" == "FAILED" ]]; then
             echo "Execution ${EXECUTION} failed"
-            aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --output table
+            aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --output table --no-cli-pager
             break
         fi
         echo "Execution is ${EXECUTION_STATUS}"
