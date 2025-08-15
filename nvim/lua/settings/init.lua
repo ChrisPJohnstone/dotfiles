@@ -23,3 +23,6 @@ vim.opt.hlsearch = true
 
 -- Diable mouse interaction
 vim.opt.mouse = ""
+
+-- Disable swap files
+vim.opt.swapfile = false
