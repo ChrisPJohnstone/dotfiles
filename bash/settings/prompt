@@ -5,16 +5,18 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Set PROMPT_COMMAND
 function prompt_command() {
-    PROMPT_GIT_BRANCH=$(git branch 2> /dev/null | sed -n 's/^\* \(.*\)/ [\1]/p')
-    PROMPT_VENV=$([ -n "${VIRTUAL_ENV}" ] && echo " [${VIRTUAL_ENV##*/}]")
+    PROMPT_GIT_BRANCH="$(git branch 2> /dev/null | sed -n 's/^\* \(.*\)/ [\1]/p')"
+    PROMPT_VENV="$([ -n "${VIRTUAL_ENV}" ] && echo " [${VIRTUAL_ENV##*/}]")"
+    PROMPT_HOST="$([[ -n "${SSH_CONNECTION}" ]] && echo "${HOSTNAME}")"
 }
 export PROMPT_COMMAND=prompt_command
 
 # Construct prompt
-PS1="$(tput rev)"
+PS1="\[$(tput rev)\]"
 PS1+="[\W]"
 PS1+="\${PROMPT_GIT_BRANCH}"
 PS1+="\${PROMPT_VENV}"
+PS1+="\${PROMPT_HOST}"
 PS1+="\[$(tput sgr0)\] "
 
 # Change prompt color when in vi command mode
