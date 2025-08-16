@@ -7,7 +7,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 function prompt_command() {
     PROMPT_GIT_BRANCH="$(git branch 2> /dev/null | sed -n 's/^\* \(.*\)/ [\1]/p')"
     PROMPT_VENV="$([ -n "${VIRTUAL_ENV}" ] && echo " [${VIRTUAL_ENV##*/}]")"
-    PROMPT_HOST="$([[ -n "${SSH_CONNECTION}" ]] && echo "${HOSTNAME}")"
+    PROMPT_HOST="$([[ -n "${SSH_CONNECTION}" ]] && echo " [${HOSTNAME}")]"
 }
 export PROMPT_COMMAND=prompt_command
 
