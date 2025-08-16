@@ -23,4 +23,4 @@ PS1+="\[$(tput sgr0)\] "
 bind 'set show-mode-in-prompt on'
 bind "set emacs-mode-string "
 bind "set vi-ins-mode-string "
-bind "set vi-cmd-mode-string $(tput setaf 5)"
+bind "set vi-cmd-mode-string \1$(tput setaf 5)\2"
