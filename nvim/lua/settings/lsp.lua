@@ -16,6 +16,7 @@ vim.lsp.enable({
   "lua",
   "python",
   "terraform",
+  "yaml",
 })
 
 -- LSP augroup
