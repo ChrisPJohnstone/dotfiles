@@ -12,6 +12,9 @@
 [status]
     short = true
     branch = true
+[format]
+    # `git log --pretty=medium` will give default behaviour
+    pretty = %C(yellow)%h %C(green)%ai %C(blue)%an %C(reset)%s %C(red)%d
 [merge]
     tool = nvimdiff
     conflictstyle = diff3
