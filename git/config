@@ -9,6 +9,9 @@
     default = current
 [pull]
     rebase = true
+[status]
+    short = true
+    branch = true
 [merge]
     tool = nvimdiff
     conflictstyle = diff3
