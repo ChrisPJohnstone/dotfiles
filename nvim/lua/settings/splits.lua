@@ -3,3 +3,5 @@ vim.opt.splitbelow = true
 
 -- Sets vertical splits to open on right
 vim.opt.splitright = true
+
+-- TODO: Change where quickfix list opens
