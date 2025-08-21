@@ -32,6 +32,3 @@
     update = !git checkout develop && git pull && git checkout - && git merge develop
     open = !$HOME/.config/git/scripts/open
     tickets-in-branch = !$HOME/.config/git/scripts/tickets_in_branch
-
-# TODO: Check out [commit.template](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-committemplate)
-# TODO: Check out [diff configuration](https://git-scm.com/docs/git-diff#_configuration)
