@@ -13,6 +13,7 @@
 [log]
     date = format:%Y:%m:%d %H:%M:%S %z
 [status]
+    relativePaths = false
     short = true
     branch = true
 [format]
@@ -33,5 +34,4 @@
     tickets-in-branch = !$HOME/.config/git/scripts/tickets_in_branch
 
 # TODO: Check out [commit.template](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-committemplate)
-# TODO: Check out [status.relativePaths](https://git-scm.com/docs/git-status#_configuration)
 # TODO: Check out [diff configuration](https://git-scm.com/docs/git-diff#_configuration)
