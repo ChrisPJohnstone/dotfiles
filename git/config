@@ -7,6 +7,7 @@
     defaultBranch = main
 [push]
     default = current
+    autoSetupRemote = true
 [pull]
     rebase = true
 [log]
@@ -30,8 +31,5 @@
     tickets-in-branch = !$HOME/.config/git/scripts/tickets_in_branch
 
 # TODO: Check out [commit.template](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt-committemplate)
-# TODO: Check out [branch.autoSetupMerge](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchautoSetupMerge)
-# TODO: Check out [branch.autoSetupRebase](https://git-scm.com/docs/git-branch#Documentation/git-branch.txt-branchautoSetupRebase)
-# TODO: Check out [checkout.defaultRemote](https://git-scm.com/docs/git-checkout#Documentation/git-checkout.txt-checkoutdefaultRemote)
 # TODO: Check out [status.relativePaths](https://git-scm.com/docs/git-status#_configuration)
 # TODO: Check out [diff configuration](https://git-scm.com/docs/git-diff#_configuration)
