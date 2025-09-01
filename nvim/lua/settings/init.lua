@@ -1,4 +1,5 @@
 require("settings.filetypes")
+require("settings.fold")
 require("settings.lazy")
 require("settings.line_numbers")
 require("settings.line_wrapping")
