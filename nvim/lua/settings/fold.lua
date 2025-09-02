@@ -12,3 +12,12 @@ function MyFoldText()
 end
 
 vim.opt.foldtext = "v:lua.MyFoldText()"
+
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  callback = function()
+    if require("nvim-treesitter.parsers").has_parser() then
+      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    end
+  end,
+})
