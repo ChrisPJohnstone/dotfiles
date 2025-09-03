@@ -22,7 +22,8 @@ function run_state_machine() {
             break
         elif [[ "${EXECUTION_STATUS}" == "FAILED" ]]; then
             echo "Execution ${EXECUTION} failed"
-            aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --output table --no-cli-pager
+            aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
+                jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
             break
         fi
         echo "Execution is ${EXECUTION_STATUS}"
