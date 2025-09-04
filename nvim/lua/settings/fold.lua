@@ -9,13 +9,3 @@ function MyFoldText()
 end
 
 vim.opt.foldtext = 'v:lua.MyFoldText()'
-
--- Use treesitter when using expr method
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-  callback = function()
-    if require('nvim-treesitter.parsers').has_parser() then
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.wo.foldmethod = 'expr'
-    end
-  end,
-})
