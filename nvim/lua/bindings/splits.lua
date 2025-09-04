@@ -13,3 +13,6 @@ vim.keymap.set("n", "<C-W>t", function()
   vim.cmd.wincmd("J")
   vim.cmd.term()
 end)
+
+-- Zoom split
+vim.keymap.set("n", "<C-W>z", "<C-W>|<C-W>_", { noremap = true })

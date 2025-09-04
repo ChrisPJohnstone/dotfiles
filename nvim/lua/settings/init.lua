@@ -1,4 +1,5 @@
 require("settings.filetypes")
+require("settings.fold")
 require("settings.line_numbers")
 require("settings.line_wrapping")
 require("settings.lsp")
@@ -22,3 +23,6 @@ vim.opt.hlsearch = true
 
 -- Diable mouse interaction
 vim.opt.mouse = ""
+
+-- Disable swap files
+vim.opt.swapfile = false

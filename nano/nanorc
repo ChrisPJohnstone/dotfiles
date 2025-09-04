@@ -1,0 +1,25 @@
+# Enable mouse support
+set mouse
+
+# Display line numbers to the left of the text area.
+set linenumbers
+
+# Set tabsize to 4 and use spaces instead of tab char
+set tabsize 4
+set tabstospaces
+
+# Automatically indent a newly created line to the same number of tabs and/or spaces as the previous line. set autoindent
+set autoindent
+
+# Suppress the title bar and instead show information about the current buffer at the bottom of the screen, in the space for the status bar.
+set minibar
+
+# Wrap lines that are longer than the screen
+set softwrap
+set atblanks
+
+# Save on close, don't ask
+# set saveonexit
+
+# Remove help lines from the bottom of the screen
+# set nohelp

@@ -7,8 +7,23 @@
     defaultBranch = main
 [push]
     default = current
+    autoSetupRemote = true
 [pull]
     rebase = true
+[log]
+    date = format:%Y:%m:%d %H:%M:%S %z
+[status]
+    relativePaths = false
+    short = true
+    branch = true
+[format]
+    pretty = %C(yellow)%h %C(blue)%><(30)%an %C(reset)%s %C(red)%d
+[diff]
+    tool = nvimdiff
+[difftool]
+    prompt = false
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [merge]
     tool = nvimdiff
     conflictstyle = diff3

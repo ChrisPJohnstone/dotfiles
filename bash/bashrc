@@ -7,9 +7,9 @@ function source_files_in_dir() {
 }
 
 CONFIG_DIR="${HOME}/.config/bash"
-source_files_in_dir "${CONFIG_DIR}/environment_variables/"
-source_files_in_dir "${CONFIG_DIR}/aliases/"
-source_files_in_dir "${CONFIG_DIR}/functions/"
-source_files_in_dir "${CONFIG_DIR}/settings/"
-source_files_in_dir "${CONFIG_DIR}/bindings/"
-source_files_in_dir "${CONFIG_DIR}/completions/"
+source_files_in_dir "${CONFIG_DIR}/environment_variables"
+source_files_in_dir "${CONFIG_DIR}/aliases"
+source_files_in_dir "${CONFIG_DIR}/functions"
+source_files_in_dir "${CONFIG_DIR}/settings"
+source_files_in_dir "${CONFIG_DIR}/bindings"
+source_files_in_dir "${CONFIG_DIR}/completions"
