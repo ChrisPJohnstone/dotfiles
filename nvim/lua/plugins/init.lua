@@ -1,0 +1,13 @@
+require("plugins.mason")
+
+require("plugins.copilot")
+require("plugins.fugitive")
+require("plugins.mini-comment")
+require("plugins.mini-hipatterns")
+require("plugins.mini-surround")
+require("plugins.mini-trailspace")
+require("plugins.octo")
+require("plugins.oil")
+require("plugins.telescope")
+require("plugins.tokyonight")
+require("plugins.treesitter")

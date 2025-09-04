@@ -1,7 +1,2 @@
-return {
-  "echasnovski/mini.surround",
-  version = "*",
-  config = function()
-    require("mini.surround").setup()
-  end,
-}
+vim.pack.add({"https://github.com/echasnovski/mini.surround"})
+require("mini.surround").setup()
