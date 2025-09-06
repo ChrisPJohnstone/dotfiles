@@ -1,5 +1,7 @@
-vim.pack.add({ "https://github.com/nvim-tree/nvim-web-devicons" })
-vim.pack.add({ "https://github.com/nvim-telescope/telescope.nvim" })
-vim.pack.add({ "https://github.com/nvim-lua/plenary.nvim" })
-vim.pack.add({ "https://github.com/pwntester/octo.nvim" })
+vim.pack.add({
+  "https://github.com/nvim-tree/nvim-web-devicons",
+  "https://github.com/nvim-telescope/telescope.nvim",
+  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/pwntester/octo.nvim",
+})
 require("octo").setup()
