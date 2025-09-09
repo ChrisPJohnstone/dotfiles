@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 function run_state_machine() {
-    STATE_MACHINE=$(aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`$1\`)].name" --output text | cut -f 3)
+    STATE_MACHINE=$(aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`$1\`)]" --output text | cut -f 3)
     COUNT=$(echo -n "${STATE_MACHINE}" | grep -c "^")
     if [[ "${COUNT}" == 0 ]]; then
         echo "No state machine found with name containing $1"
