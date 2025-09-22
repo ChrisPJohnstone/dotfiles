@@ -18,9 +18,3 @@ PS1+="\${PROMPT_GIT_BRANCH}"
 PS1+="\${PROMPT_VENV}"
 PS1+="\${PROMPT_HOST}"
 PS1+="\[$(tput sgr0)\] "
-
-# Change prompt color when in vi command mode
-bind 'set show-mode-in-prompt on'
-bind "set emacs-mode-string "
-bind "set vi-ins-mode-string "
-bind "set vi-cmd-mode-string \1$(tput setaf 5)\2"
