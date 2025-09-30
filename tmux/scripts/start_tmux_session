@@ -4,11 +4,14 @@
 # If no argument is provided, it defaults to the home directory.
 # It will determine the bottom directory of the path and attach to that session.
 # If the session does not exist, it will create a new tmux session with that name and path.
-if [ -z "${1}" ]
-then
+if [ -z "${1}" ]; then
     FILEPATH="${HOME}"
     SESSION_NAME="Home"
 else
+    if [[ ! -d "${1}" ]]; then
+        echo "Error: Directory '${1}' does not exist."
+        exit 1
+    fi
     if [[ $1 == */ ]]; then
         FILEPATH="$PWD/${1:0:${#1}-1}"
     else
