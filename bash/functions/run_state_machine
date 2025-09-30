@@ -15,18 +15,17 @@ function run_state_machine() {
     else
         EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --input "${2}" --output text | cut -f 1)
     fi
+    echo "STARTED ${EXECUTION}"
     while true; do
         EXECUTION_STATUS=$(aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "status" --output text)
+        echo "${EXECUTION_STATUS} ${EXECUTION}"
         if [[ "${EXECUTION_STATUS}" == "SUCCEEDED" ]]; then
-            echo "Execution ${EXECUTION} succeeded"
             break
         elif [[ "${EXECUTION_STATUS}" == "FAILED" ]]; then
-            echo "Execution ${EXECUTION} failed"
             aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
                 jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
             break
         fi
-        echo "Execution is ${EXECUTION_STATUS}"
         sleep 5
     done
 }
