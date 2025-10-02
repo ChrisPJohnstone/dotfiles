@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 function open_ticket() {
-    if [[ -z "$1" ]]; then
-        echo "Usage: ticket <ticket-number>"
+    local JIRA_URL="https://keyloop.atlassian.net"
+    local TICKET_ID="$1"
+    if [[ -z "${TICKET_ID}" ]]; then
+        echo "Usage: ticket <ticket-id>"
         return 1
     fi
-    URL="https://keyloop.atlassian.net/browse/MDATA-$1"
+    if [[ "${TICKET_ID}" =~ ^[0-9] ]]; then
+        URL="${JIRA_URL}/browse/MDATA-${TICKET_ID}"
+    else
+        URL="${JIRA_URL}/browse/${TICKET_ID}"
+    fi
     ${BROWSER} "${URL}" &> /dev/null
 }
 
