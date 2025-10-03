@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-complete -C /usr/bin/terraform terraform
+if [[ "$(uname)" == "Linux" ]]; then
+    complete -C /usr/bin/terraform terraform
+elif [[ "$(uname)" == "Darwin" ]]; then
+    complete -C /opt/homebrew/Cellar/tfenv/3.0.0/versions/1.11.2/terraform terraform
+fi
