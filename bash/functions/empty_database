@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+function empty_database() {
+    DATABASE_NAME="${1}"
+    if [ -z "${DATABASE_NAME}" ]; then
+        echo "Usage: empty_database <database_name>"
+        return 1
+    fi
+
+    AWS_CHECK=$(aws sts get-caller-identity 2> /dev/null)
+    if [ -z "${AWS_CHECK}" ]; then
+        echo "AWS CLI is not configured. Please configure it and try again."
+        return 1
+    fi
+
+    DATABASE_CHECK=$(aws glue get-database --name "${DATABASE_NAME}" 2> /dev/null)
+    if [ -z "${DATABASE_CHECK}" ]; then
+        echo "Database ${DATABASE_NAME} does not exist."
+        return 1
+    fi
+
+    TABLES_STRING=$(aws glue get-tables --database-name "${DATABASE_NAME}" --attributes-to-get NAME --query 'TableList[].Name' --output text)
+    if [ -z "${TABLES_STRING}" ]; then
+        echo "Database ${DATABASE_NAME} is already empty."
+        return 0
+    fi
+
+    read -ra TABLES <<< "${TABLES_STRING}"
+    while true; do
+        echo "Deleting tables from database ${DATABASE_NAME}"
+        printf '%s\n' "${TABLES[@]}"
+        read -rp "Are you sure you want to delete these tables? (y/n) " -n 1 CHOICE
+        echo
+        case "${CHOICE}" in
+            [yY]) aws glue batch-delete-table --database-name "${DATABASE_NAME}" --tables-to-delete "${TABLES[@]}" --no-cli-pager && return 0;;
+            [nN]) echo "Aborting." && return 1;;
+            *) echo "Invalid choice. Please enter y or n." && echo;;
+        esac
+    done
+}
