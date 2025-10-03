@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 function completion_cdk() {
     COMPREPLY=()
+    declare -a COMMANDS=(
+        "ls"
+        "synth"
+        "deploy"
+        "acknowledge"
+    )
 
-    local CUR_WORD ARGS OPTIONS STACKS
-    CUR_WORD="${COMP_WORDS[COMP_CWORD]}"
-    ARGS=("${COMP_WORDS[@]}")
+    if [[ ${COMP_CWORD} -eq 1 ]]; then
+        COMPREPLY=($(compgen -W "${COMMANDS[*]}" -- "${COMP_WORDS[1]}"))
+        return
+    fi
 
-    OPTIONS=$(cdk --get-yargs-completions "${ARGS[@]}")
-    STACKS=$(ls cdk.out/${COMP_WORDS[COMP_CWORD]}*.template.json 2> /dev/null | sed 's/cdk.out\/\(.*\)\.template\.json/\1/')
-    if [[ "${ARGS[*]}" =~ deploy|destroy ]]; then
-        COMBINED=("${OPTIONS} ${STACKS}")
-        COMPREPLY+=( $(compgen -W "${COMBINED}" -- "${CUR_WORD}") )
-        return 0
-    else
-        COMPREPLY=( $(compgen -W "${OPTIONS}" -- "${CUR_WORD}") )
-        return 0
+    local COMMAND="${COMP_WORDS[1]}"
+    if [[ ${COMMAND} == "deploy" ]] || [[ ${COMMAND} == "destroy" ]]; then
+        [ -d "cdk.out" ] && COMPREPLY=($(ls cdk.out/${COMP_WORDS[COMP_CWORD]}*.template.json 2> /dev/null | sed 's/cdk.out\/\(.*\)\.template\.json/\1/'))
+        return
     fi
 }
 
