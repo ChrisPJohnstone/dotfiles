@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+export SHELL='#!/usr/bin/env bash'
