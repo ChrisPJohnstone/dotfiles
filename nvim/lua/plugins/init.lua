@@ -1,6 +1,5 @@
 require("plugins.mason")
 
-require("plugins.copilot")
 require("plugins.fugitive")
 require("plugins.mini-comment")
 require("plugins.mini-hipatterns")
