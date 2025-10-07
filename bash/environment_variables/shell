@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
-export SHELL='#!/usr/bin/env bash'
+if [[ "$(uname)" == "Linux" ]]; then
+    export SHELL='/bin/bash'
+elif [[ "$(uname)" == "Darwin" ]]; then
+    export SHELL='/opt/homebrew/bin/bash'
+else
+    echo "Unknown OS, please set SHELL manually or update bashrc"
+fi
+
