@@ -1,5 +1,5 @@
 return {
-  cmd = { "pyright-langserver", "--stdio" },
+  cmd = { "zuban", "server" },
   filetypes = { "python" },
   root_markers = {
     "pyproject.toml",
