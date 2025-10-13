@@ -9,3 +9,6 @@ function MyFoldText()
 end
 
 vim.opt.foldtext = 'v:lua.MyFoldText()'
+
+-- Start with folds open
+vim.opt.foldenable = false
