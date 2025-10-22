@@ -17,6 +17,7 @@ This section provides a brief overview of the tools and applications I use, cate
 Tools that I use across all operating systems.
 - [bash](https://www.gnu.org/software/bash/) Shell
 - [git](https://git-scm.com/) Version Control System
+- [glow](https://github.com/charmbracelet/glow) Terminal based markdown reader
 - [kitty](https://sw.kovidgoyal.net/kitty/) Terminal Emulator
 - [nano](https://www.nano-editor.org/) Text editor
 - [nvim](https://neovim.io/) Primary text editor
