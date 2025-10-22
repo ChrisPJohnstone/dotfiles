@@ -1,5 +1,6 @@
 require("plugins.mason")
 
+require("plugins.diffview")
 require("plugins.fugitive")
 require("plugins.mini-comment")
 require("plugins.mini-hipatterns")
