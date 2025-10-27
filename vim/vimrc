@@ -66,3 +66,9 @@ set path+=**
 set wildignore+=*/__pycache__/*
 set wildignore+=*venv/*
 set wildignore+=*/node_modules/*
+
+" Set leader key to space
+let mapleader = " "
+
+" Save shorcut
+noremap <leader>s :w<CR>
