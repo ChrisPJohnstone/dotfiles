@@ -56,12 +56,6 @@ set visualbell
 " Disable linewrapping
 set nowrap
 
-" Command for encasing
-let mapleader="\\"
-nnoremap <leader>' ciw'<C-R>"'<ESC>bh
-nnoremap <leader>" ciw"<C-R>""<ESC>bh
-nnoremap <leader>` ciw`<C-R>"`<ESC>bh
-
 " Enables gf to open python imports
 filetype plugin on
 
