@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+function get_state_machine_fail() {
+    STATE_MACHINE="${1}"
+    if [ -z "${STATE_MACHINE}" ]; then
+        echo "Usage: get_state_machine_fail <state-machine-arn>"
+        return 1
+    fi
+    EXECUTION=$(aws stepfunctions list-executions --state-machine-arn "${STATE_MACHINE}" --no-cli-pager --query 'executions[?status==`FAILED`].executionArn' --output text --max-items 1 | head -n 1)
+    if [ -z "${EXECUTION}" ]; then
+        echo "No failed executions found."
+        return 1
+    fi
+    aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
+        jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
+
+    # TODO: Enable proper debugging
+    # aws stepfunctions get-execution-history --execution-arn "${FAIL_ARN}"
+}
