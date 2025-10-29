@@ -10,9 +10,10 @@ function get_state_machine_fail() {
         echo "No failed executions found."
         return 1
     fi
-    aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
-        jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
+    # aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
+    #     jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
 
-    # TODO: Enable proper debugging
-    # aws stepfunctions get-execution-history --execution-arn "${FAIL_ARN}"
+    # TODO: Make output more readable
+    # TODO: Catch JSON strings in cause
+    aws stepfunctions get-execution-history --execution-arn "${EXECUTION}" --query 'events[?type==`TaskFailed`].taskFailedEventDetails' | jq
 }
