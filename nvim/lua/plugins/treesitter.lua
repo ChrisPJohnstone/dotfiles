@@ -3,6 +3,7 @@ require("nvim-treesitter.configs").setup({
   ensure_installed = {
     "json",
     "lua",
+    "go",
     "python",
     "sql",
     "tmux",
