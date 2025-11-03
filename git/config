@@ -1,6 +1,7 @@
 [user]
     name = Christopher Johnstone
 [core]
+    pager = delta
     autocrlf = input
     excludesfile = /Users/christopherjohnstone/.gitignore_global
 [init]
@@ -18,6 +19,13 @@
     branch = true
 [format]
     pretty = %C(yellow)%h %C(blue)%><(30)%an %C(reset)%s %C(red)%d
+[merge]
+    conflictstyle = zdiff3
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    line-numbers = true
 [alias]
     edit = !$EDITOR $(git ls-files -o -m --exclude-standard)
     newbranch = !git checkout develop && git pull && git checkout -b $1
