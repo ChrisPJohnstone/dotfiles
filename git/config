@@ -18,20 +18,6 @@
     branch = true
 [format]
     pretty = %C(yellow)%h %C(blue)%><(30)%an %C(reset)%s %C(red)%d
-[diff]
-    tool = nvimdiff
-[difftool]
-    prompt = false
-[difftool "nvimdiff"]
-    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
-[merge]
-    tool = nvimdiff
-    conflictstyle = diff3
-[mergetool]
-    prompt = false
-    keepBackup = false
-[mergetool "nvimdiff"]
-    cmd = "nvim -d $MERGED $LOCAL $BASE $REMOTE -c 'wincmd J | wincmd ='"
 [alias]
     edit = !$EDITOR $(git ls-files -o -m --exclude-standard)
     newbranch = !git checkout develop && git pull && git checkout -b $1
