@@ -7,3 +7,6 @@ vim.cmd([[highlight ColorColumn ctermbg=8]])
 
 -- Set foldlevel
 vim.opt_local.foldlevel = 1
+
+-- Disable auto-continuation of comments
+vim.opt_local.formatoptions = "jqlc"
