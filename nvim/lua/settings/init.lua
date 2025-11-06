@@ -1,3 +1,4 @@
+require("settings.cursor_line")
 require("settings.filetypes")
 require("settings.fold")
 require("settings.line_numbers")
