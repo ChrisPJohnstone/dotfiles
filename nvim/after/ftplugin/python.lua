@@ -11,6 +11,7 @@ vim.g.python_indent = {
   close_paren = 'shiftwidth()',
   nested_paren = 'shiftwidth()',
   continue = 'shiftwidth()',
+  closed_paren_align_last_line = 0,
 }
 
 -- Add a vertical ruler at char 80 & make it light grey
