@@ -2,11 +2,11 @@
 vim.opt.number = true
 
 -- Group
-vim.api.nvim_create_augroup("LineNumbers", { clear = true })
+local line_number_augroup = vim.api.nvim_create_augroup("LineNumbers", { clear = true })
 
 -- Enable line numbering in terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
-  group = "LineNumbers",
+  group = line_number_augroup,
   callback = function()
     if vim.bo.buflisted then
       vim.opt_local.number = true
@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 
 -- Enable relative line numbering for focused window
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "WinEnter" }, {
-  group = "LineNumbers",
+  group = line_number_augroup,
   pattern = { "*" },
   callback = function()
     vim.opt_local.number = true
@@ -27,7 +27,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "WinEnter" }, {
 
 -- Disable relative numbers when leaving a window
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "WinLeave" }, {
-  group = "LineNumbers",
+  group = line_number_augroup,
   pattern = { "*" },
   callback = function()
     vim.opt_local.relativenumber = false
