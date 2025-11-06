@@ -24,12 +24,8 @@ vim.lsp.enable({
 local lsp_augroup = vim.api.nvim_create_augroup("LSP", {})
 
 function LSPFormatOnSave(client, buf)
-  if
-      not client:supports_method("textDocument/formatting")
-      and client:supports_method("textDocument/willSaveWaitUntil")
-  then
-    return
-  end
+  if not client:supports_method("textDocument/formatting") then return end
+  if client:supports_method("textDocument/willSaveWaitUntil") then return end
   vim.api.nvim_create_autocmd("BufWritePre", {
     group = lsp_augroup,
     buffer = buf,
@@ -40,9 +36,7 @@ function LSPFormatOnSave(client, buf)
 end
 
 function LSPCompletion(client, buf)
-  if not client:supports_method("textDocument/completion") then
-    return
-  end
+  if not client:supports_method("textDocument/completion") then return end
   vim.opt.completeopt = {
     "menu",
     "menuone",
@@ -86,9 +80,7 @@ function LSPDocumentHighlight(client, buf)
       break
     end
   end
-  if not supports_highlight then
-    return
-  end
+  if not supports_highlight then return end
   vim.lsp.buf.clear_references()
   vim.lsp.buf.document_highlight()
 end
@@ -119,9 +111,7 @@ vim.api.nvim_create_autocmd("CursorMoved", {
         break
       end
     end
-    if not supports_highlight then
-      return
-    end
+    if not supports_highlight then return end
     vim.lsp.buf.clear_references()
     vim.lsp.buf.document_highlight()
   end
