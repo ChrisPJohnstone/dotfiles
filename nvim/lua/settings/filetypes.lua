@@ -21,3 +21,9 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*/tmux/*.conf",
   command = "set filetype=tmux",
 })
+
+-- .env Files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = ".env*",
+  command = "set filetype=dosini",
+})
