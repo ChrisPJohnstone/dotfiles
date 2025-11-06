@@ -1,7 +1,17 @@
--- Configs
-vim.cmd("autocmd BufRead,BufNewFile */git/config set filetype=gitconfig")
-vim.cmd("autocmd BufRead,BufNewFile */tmux/*.conf set filetype=tmux")
-
 -- SQL Files
-vim.cmd("autocmd BufRead,BufNewFile *.ddl set filetype=sql")
-vim.cmd("autocmd BufRead,BufNewFile *.dml set filetype=sql")
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.ddl", "*.dml" },
+  command = "set filetype=sql",
+})
+
+-- Git Config
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*/git/config",
+  command = "set filetype=gitconfig",
+})
+
+-- Tmux Config
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*/tmux/*.conf",
+  command = "set filetype=tmux",
+})
