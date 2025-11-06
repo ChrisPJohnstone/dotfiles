@@ -16,7 +16,6 @@
 [status]
     relativePaths = false
     short = true
-    branch = true
 [format]
     pretty = %C(yellow)%h %C(blue)%><(30)%an %C(reset)%s %C(red)%d
 [merge]
