@@ -2,6 +2,7 @@ require("plugins.mason")
 
 require("plugins.fugitive")
 require("plugins.mini-comment")
+require("plugins.mini-diff")
 require("plugins.mini-hipatterns")
 require("plugins.mini-surround")
 require("plugins.mini-trailspace")
