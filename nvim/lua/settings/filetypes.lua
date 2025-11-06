@@ -4,6 +4,12 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   command = "set filetype=sql",
 })
 
+-- JSON Lines
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.jsonl",
+  command = "set filetype=json",
+})
+
 -- Git Config
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*/git/config",
