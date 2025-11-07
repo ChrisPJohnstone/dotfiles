@@ -1,3 +1,4 @@
+require("settings.commands")
 require("settings.cursor_line")
 require("settings.filetypes")
 require("settings.fold")
