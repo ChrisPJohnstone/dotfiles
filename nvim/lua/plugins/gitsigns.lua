@@ -6,4 +6,4 @@ require("gitsigns").setup({
   signcolumn = false,
 })
 
-vim.keymap.set('n', '<leader>gd', "<cmd>Gitsigns diffthis HEAD<CR>")
+vim.keymap.set('n', '<leader>gd', "<cmd>Gitsigns diffthis develop<CR>")
