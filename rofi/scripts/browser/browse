@@ -2,12 +2,14 @@
 SCRIPT_DIR="${HOME}/.config/rofi/scripts"
 
 AMAZON_PRIME_VIDEO="Amazon Prime Video"
+CHANNEL_4="Channel 4"
 DISNEY_PLUS="Disney+"
 NETFLIX="Netflix"
 YOUTUBE="Youtube"
 
 declare -A SITES=(
     ["${AMAZON_PRIME_VIDEO}"]="www.amazon.co.uk/gp/video/storefront/"
+    ["${CHANNEL_4}"]="www.channel4.com/"
     ["${DISNEY_PLUS}"]="www.disneyplus.com"
     ["${NETFLIX}"]="www.netflix.com"
     ["${YOUTUBE}"]="www.youtube.com"
@@ -40,6 +42,7 @@ declare -A FOLLOW_UPS=(
     ["${YOUTUBE}"]="${SCRIPT_DIR}/browser/search_youtube"
 )
 declare -A OPEN_SCRIPTS=(
+    ["${CHANNEL_4}"]="${SCRIPT_DIR}/browser/open_with_vpn_off"
     ["${DISNEY_PLUS}"]="${SCRIPT_DIR}/browser/open_with_vpn_off"
 )
 
