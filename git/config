@@ -16,6 +16,7 @@
 [status]
     relativePaths = false
     short = true
+    branch = true # Show remote tracking info
 [format]
     pretty = %C(yellow)%h %C(blue)%><(30)%an %C(reset)%s %C(red)%d
 [merge]

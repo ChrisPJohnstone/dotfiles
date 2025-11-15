@@ -16,11 +16,14 @@ This section provides a brief overview of the tools and applications I use, cate
 
 Tools that I use across all operating systems.
 - [bash](https://www.gnu.org/software/bash/) Shell
+- [firefox](https://www.firefox.com/en-US/)
 - [git](https://git-scm.com/) Version Control System
+    - [git-delta](https://github.com/dandavison/delta) Syntax highlighting pager for git and diff output
 - [glow](https://github.com/charmbracelet/glow) Terminal based markdown reader
 - [kitty](https://sw.kovidgoyal.net/kitty/) Terminal Emulator
 - [nano](https://www.nano-editor.org/) Text editor
 - [nvim](https://neovim.io/) Primary text editor
+- [ripgrep](https://github.com/BurntSushi/ripgrep) Much faster grep
 - [tmux](https://github.com/tmux/tmux) Terminal multiplexer
 - [vim](https://www.vim.org/) Text editor
 
@@ -32,9 +35,17 @@ Tools that I use on macOS.
 ## Linux
 
 Tools that I use on Linux.
+- [calcurse](https://www.calcurse.org/) Text based calender and scheduling app
 - [gammastep](https://gitlab.com/chinstrap/gammastep) Screen color temperature controller
+- [grim](https://github.com/emersion/grim) Screenshot Utility for Wayland
 - [gtk-3.0](https://docs.gtk.org/gtk3/) GUI toolkit for Linux applications
-- [hypr](https://hyprland.org/) Dynamic tiling window manager
+- [hyprland](https://hyprland.org/) Dynamic tiling window manager
+    - [hyprlock](https://github.com/hyprwm/hyprlock/) Lockscreen Utility for hyprland
+    - [hyprpaper](https://github.com/hyprwm/hyprpaper) Wallpaper Utility for hyprland
 - [mako](https://github.com/emersion/mako) Notification daemon
+- [nemo](https://github.com/linuxmint/nemo) Graphical file browser
+- [pavucontrol](https://github.com/pulseaudio/pavucontrol) Graphical Sound Controller
 - [rofi](https://github.com/davatorium/rofi) Application launcher
+- [slurp](https://github.com/emersion/slurp) Screen region selector for Wayland
 - [waybar](https://github.com/Alexays/Waybar) Status bar for Wayland
+- [wl-clipboard](https://github.com/bugaevc/wl-clipboard) Clipboard utility for Wayland
