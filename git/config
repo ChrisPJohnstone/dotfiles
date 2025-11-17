@@ -18,7 +18,7 @@
     short = true
     branch = true # Show remote tracking info
 [format]
-    pretty = %C(yellow)%h %C(blue)%><(30)%an %C(reset)%s %C(red)%d
+    pretty = %C(green)%cd %C(yellow)%h %C(blue)%><(30)%an %C(reset)%s %C(red)%d
 [merge]
     conflictstyle = zdiff3
 [interactive]
