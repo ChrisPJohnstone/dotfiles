@@ -9,8 +9,11 @@
 [push]
     default = current
     autoSetupRemote = true
+    ; recurseSubmodules = on-demand
 [pull]
     rebase = true
+[submodule]
+    recurse = true
 [log]
     date = format:%Y:%m:%d %H:%M:%S %z
 [status]
