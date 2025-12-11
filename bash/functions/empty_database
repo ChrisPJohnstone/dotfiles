@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-function empty_database() {
+function empty-database() {
     DATABASE_NAME="${1}"
     if [ -z "${DATABASE_NAME}" ]; then
         echo "Usage: empty_database <database_name>"

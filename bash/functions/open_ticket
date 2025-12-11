@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-function open_ticket() {
+function open-ticket() {
     local JIRA_URL="https://keyloop.atlassian.net"
     local TICKET_ID="$1"
     if [[ -z "${TICKET_ID}" ]]; then

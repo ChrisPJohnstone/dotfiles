@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-function get_state_machine_fail() {
+function get-state-machine-fail() {
     STATE_MACHINE="${1}"
     if [ -z "${STATE_MACHINE}" ]; then
         echo "Usage: get_state_machine_fail <state-machine-arn>"
