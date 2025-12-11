@@ -14,4 +14,4 @@ function open-ticket() {
     ${BROWSER} "${URL}" &> /dev/null
 }
 
-alias ticket=open_ticket
+alias ticket=open-ticket

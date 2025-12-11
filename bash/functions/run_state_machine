@@ -30,4 +30,4 @@ function run-state-machine() {
     done
 }
 
-alias rsm=run_state_machine
+alias rsm=run-state-machine
