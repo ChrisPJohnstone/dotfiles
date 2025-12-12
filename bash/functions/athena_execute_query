@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+function athena-execute-query() {
+    local QUERY_STRING
+    QUERY_STRING="${*}"
+    if [ -z "${QUERY_STRING}" ]; then
+        echo "Usage: athena-execute-query <query_string>"
+        return 1
+    fi
+    [ -z "${WORKGROUP}" ] && WORKGROUP="primary"
+    aws athena start-query-execution --no-cli-pager --work-group "${WORKGROUP}" --query-string "${QUERY_STRING}"
+}

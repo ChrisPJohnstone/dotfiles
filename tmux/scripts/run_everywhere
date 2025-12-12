@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+run-everywhere() {
+    declare -a PANES
+    mapfile -t PANES < <(tmux list-panes -a -F "#{session_id}:#{window_index}:#{pane_index}")
+    for PANE in "${PANES[@]}"; do
+        IFS=':' read -r SESSION WINDOW PANE_INDEX <<< "$PANE"
+        echo "Running command in pane $PANE_INDEX of window $WINDOW in session $SESSION"
+    done
+}
+
+run-everywhere
