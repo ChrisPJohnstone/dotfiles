@@ -27,3 +27,9 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = ".env*",
   command = "set filetype=dosini",
 })
+
+-- `.tml` Files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.tml",
+  command = "set filetype=json",
+})
