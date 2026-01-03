@@ -8,10 +8,7 @@ vim.opt_local.formatoptions = "jqlc"
 -- Fix python indenting for open parens
 vim.g.python_indent = {
   open_paren = 'shiftwidth()',
-  close_paren = 'shiftwidth()',
-  nested_paren = 'shiftwidth()',
-  continue = 'shiftwidth()',
-  closed_paren_align_last_line = 0,
+  closed_paren_align_last_line = false,
 }
 
 -- Add a vertical ruler at char 80 & make it light grey

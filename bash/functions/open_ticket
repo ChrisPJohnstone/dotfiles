@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-function open_ticket() {
+function open-ticket() {
     local JIRA_URL="https://keyloop.atlassian.net"
     local TICKET_ID="$1"
     if [[ -z "${TICKET_ID}" ]]; then
@@ -14,4 +14,4 @@ function open_ticket() {
     ${BROWSER} "${URL}" &> /dev/null
 }
 
-alias ticket=open_ticket
+alias ticket=open-ticket

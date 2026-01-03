@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+function validate-json-lines() {
+    for FILE in "$@"; do
+        if [[ ! -f "${FILE}" ]]; then
+            echo "File not found: ${FILE}" >&2
+            continue
+        fi
+        while read -r LINE; do
+            jq <<< "${LINE}"
+        done < "${FILE}"
+    done
+}
