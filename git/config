@@ -23,7 +23,13 @@
 [format]
     pretty = %C(green)%cd %C(yellow)%h %C(blue)%><(30)%an %C(reset)%s %C(red)%d
 [merge]
+    tool = nvimdiff
     conflictstyle = zdiff3
+[mergetool]
+    prompt = true
+    keepBackup = false
+[mergetool "nvimdiff"]
+    layout = "LOCAL,BASE,REMOTE / MERGED"
 [interactive]
     diffFilter = delta --color-only
 [delta]
