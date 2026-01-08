@@ -4,11 +4,11 @@ function run-state-machine() {
     COUNT=$(echo -n "${STATE_MACHINE}" | grep -c "^")
     if [[ "${COUNT}" == 0 ]]; then
         echo "No state machine found with name containing $1"
-        return
+        return 1
     elif [[ "${COUNT}" -gt 1 ]]; then
         echo "Multiple state machines found with name containing $1"
         printf '%s\n' "${STATE_MACHINE}"
-        return
+        return 1
     fi
     if [[ -z "${2}" ]]; then
         EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --output text | cut -f 1)
@@ -20,11 +20,11 @@ function run-state-machine() {
         EXECUTION_STATUS=$(aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "status" --output text)
         echo "${EXECUTION_STATUS} ${EXECUTION}"
         if [[ "${EXECUTION_STATUS}" == "SUCCEEDED" ]]; then
-            break
+            return 1
         elif [[ "${EXECUTION_STATUS}" == "FAILED" ]]; then
             aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
                 jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
-            break
+            return 0
         fi
         sleep 5
     done
