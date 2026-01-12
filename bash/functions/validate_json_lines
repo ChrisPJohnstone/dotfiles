@@ -1,12 +1,40 @@
 #!/usr/bin/env bash
-function validate-json-lines() {
-    for FILE in "$@"; do
-        if [[ ! -f "${FILE}" ]]; then
-            echo "File not found: ${FILE}" >&2
-            continue
+function validate-json() {
+    if [[ "${#}" -eq 0 ]]; then
+        echo "Usage: validate-json <json-string>|<json-file>" >&2
+        return 1
+    fi
+
+    if [[ -f "${1}" ]]; then
+        if [[ "${#}" -gt 1 ]]; then
+            echo "Error: Multiple arguments provided, but first argument is a file." >&2
+            return 1
         fi
-        while read -r LINE; do
-            jq <<< "${LINE}"
-        done < "${FILE}"
-    done
+        jq < "${1}" > /dev/null
+    else
+        jq <<< "${@}" > /dev/null
+    fi
+    return "${?}"
+}
+
+function validate-json-lines() {
+    if [[ "${#}" != 1 ]]; then
+        echo "Usage: ${0} <json-lines-file>"
+        return 1
+    fi
+    if [[ ! -f "${1}" ]]; then
+        echo "Error: File not found: ${1}"
+        return 1
+    fi
+
+    local n_line
+    n_line=0
+    while read -r LINE; do
+        n_line=$((n_line + 1))
+        if ! validate-json "${LINE}"; then
+            echo "Invalid JSON line: ${n_line}" >&2
+            return 1
+        fi
+    done < "${1}"
+    return 0
 }
