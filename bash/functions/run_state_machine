@@ -1,32 +1,51 @@
 #!/usr/bin/env bash
 function run-state-machine() {
-    STATE_MACHINE=$(aws stepfunctions list-state-machines --query "stateMachines[?contains(name, \`$1\`)]" --output text | cut -f 3)
-    COUNT=$(echo -n "${STATE_MACHINE}" | grep -c "^")
-    if [[ "${COUNT}" == 0 ]]; then
-        echo "No state machine found with name containing $1"
-        return 1
-    elif [[ "${COUNT}" -gt 1 ]]; then
-        echo "Multiple state machines found with name containing $1"
-        printf '%s\n' "${STATE_MACHINE}"
+    local n_args name payload
+    n_args=${#}
+    name="${1}"
+    payload="${2}"
+    if [ -z "${name}" ] || [ "${n_args}" -eq 0 ] || [ "${n_args}" -gt 2 ]; then
+        echo "Usage: run-state-machine <state-machine-name> [<json-payload>]"
         return 1
     fi
-    if [[ -z "${2}" ]]; then
-        EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --output text | cut -f 1)
+
+    local query
+    query="stateMachines[?contains(name, \`$name\`)].stateMachineArn"
+    declare -a state_machines
+    mapfile -t state_machines < <(aws stepfunctions list-state-machines --query "${query}" --output text | cut -f 3)
+    declare -i count
+    count=${#state_machines[@]}
+    if [[ "${count}" == 0 ]]; then
+        echo "No state machine found with name containing ${name}"
+        return 1
+    elif [[ "${count}" -gt 1 ]]; then
+        echo "Multiple state machines found with name containing ${name}"
+        printf '%s\n' "${state_machines[@]}"
+        return 1
+    fi
+
+    local state_machine_arn execution_arn
+    state_machine_arn="${state_machines[0]}"
+    if [[ -z "${payload}" ]]; then
+        execution_arn=$(aws stepfunctions start-execution --state-machine-arn "${state_machine_arn}" --query "executionArn" --output text)
     else
-        EXECUTION=$(aws stepfunctions start-execution --state-machine-arn "${STATE_MACHINE}" --input "${2}" --output text | cut -f 1)
+        execution_arn=$(aws stepfunctions start-execution --state-machine-arn "${state_machine_arn}" --query "executionArn" --output text --input "${payload}")
     fi
-    echo "STARTED ${EXECUTION}"
+
+    echo "STARTED ${execution_arn}"
+    local execution_status
     while true; do
-        EXECUTION_STATUS=$(aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "status" --output text)
-        echo "${EXECUTION_STATUS} ${EXECUTION}"
-        if [[ "${EXECUTION_STATUS}" == "SUCCEEDED" ]]; then
-            return 1
-        elif [[ "${EXECUTION_STATUS}" == "FAILED" ]]; then
-            aws stepfunctions describe-execution --execution-arn "${EXECUTION}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
-                jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
-            return 0
-        fi
-        sleep 5
+        execution_status=$(aws stepfunctions describe-execution --execution-arn "${execution_arn}" --query "status" --output text)
+        echo "${execution_status} ${execution_arn}"
+        case "${execution_status}" in
+            SUCCEEDED) return 0;;
+            FAILED)
+                aws stepfunctions describe-execution --execution-arn "${execution_arn}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
+                    jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
+                return 1
+            ;;
+            *) sleep 5;;
+        esac
     done
 }
 
