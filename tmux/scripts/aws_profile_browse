@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+function aws-profile-browse() {
+    local COMMAND base_url profile account role url
+    COMMAND="new-window -d ${BROWSER}"
+    base_url="${ sed -n 's/^sso_start_url = //p' "${HOME}/.aws/config"; }"
+
+    declare -i n=0
+    while IFS="|" read -r profile account role; do
+        url="${base_url}/#/console?account_id=${account}&role_name=${role}"
+        echo "'${profile}' ${n} '${COMMAND} ${url}'"
+        ((n++))
+    done <<< "${
+        # AI Generated Command - Reads SSO profiles from AWS config
+        grep -E '^\[profile |^sso_account_id|^sso_role_name' "${HOME}/.aws/config" | \
+            awk '/^\[profile / {profile=$2; gsub(/\]/,"",profile)}
+            /^sso_account_id/ {account=$3}
+            /^sso_role_name/ {role=$3; print profile "|" account "|" role}';
+    }"
+}
+
+aws-profile-browse | xargs tmux display-menu -T "Profile"

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-function profiles() {
+function aws-profile-export() {
     i=0
     while read -r LINE; do
         echo "${LINE} $i 'send-keys export\ AWS_PROFILE=${LINE}'"
@@ -7,4 +7,4 @@ function profiles() {
     done <<< "$(grep "^\[profile" "$HOME/.aws/config" | sed 's/\[profile \([^]]*\)\]/\1/')"
 }
 
-profiles | xargs tmux display-menu -T "Profile"
+aws-profile-export | xargs tmux display-menu -T "Profile"
