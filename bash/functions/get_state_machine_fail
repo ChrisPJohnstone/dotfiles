@@ -5,7 +5,7 @@ function get-state-machine-fail() {
         echo "Usage: get_state_machine_fail <state-machine-arn>"
         return 1
     fi
-    EXECUTION=$(aws stepfunctions list-executions --state-machine-arn "${STATE_MACHINE}" --no-cli-pager --query 'executions[?status==`FAILED`].executionArn' --output text --max-items 1 | head -n 1)
+    EXECUTION=${ aws stepfunctions list-executions --state-machine-arn "${STATE_MACHINE}" --no-cli-pager --query 'executions[?status==`FAILED`].executionArn' --output text --max-items 1 | head -n 1; }
     if [ -z "${EXECUTION}" ]; then
         echo "No failed executions found."
         return 1

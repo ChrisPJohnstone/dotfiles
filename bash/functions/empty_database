@@ -6,19 +6,19 @@ function empty-database() {
         return 1
     fi
 
-    AWS_CHECK=$(aws sts get-caller-identity 2> /dev/null)
+    AWS_CHECK=${ aws sts get-caller-identity 2> /dev/null; }
     if [ -z "${AWS_CHECK}" ]; then
         echo "AWS CLI is not configured. Please configure it and try again."
         return 1
     fi
 
-    DATABASE_CHECK=$(aws glue get-database --name "${DATABASE_NAME}" 2> /dev/null)
+    DATABASE_CHECK=${ aws glue get-database --name "${DATABASE_NAME}" 2> /dev/null; }
     if [ -z "${DATABASE_CHECK}" ]; then
         echo "Database ${DATABASE_NAME} does not exist."
         return 1
     fi
 
-    TABLES_STRING=$(aws glue get-tables --database-name "${DATABASE_NAME}" --attributes-to-get NAME --query 'TableList[].Name' --output text)
+    TABLES_STRING=${ aws glue get-tables --database-name "${DATABASE_NAME}" --attributes-to-get NAME --query 'TableList[].Name' --output text; }
     if [ -z "${TABLES_STRING}" ]; then
         echo "Database ${DATABASE_NAME} is already empty."
         return 0

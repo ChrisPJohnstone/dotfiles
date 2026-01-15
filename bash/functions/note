@@ -2,7 +2,7 @@
 function note() {
     local NOTES_DIR DATE_STR NOTE_FILE
     NOTES_DIR="${HOME}/notes/daily"
-    DATE_STR="$(date +"%Y-%m-%d")"
+    DATE_STR="${ date +"%Y-%m-%d"; }"
     NOTE_FILE="${NOTES_DIR}/${DATE_STR}.md"
 
     [[ ! -d "${NOTES_DIR}" ]] && mkdir -p "${NOTES_DIR}"

@@ -9,7 +9,7 @@ function athena-execute-query() {
     [ -z "${WORKGROUP}" ] && WORKGROUP="primary"
 
     local execution_id
-    execution_id=$(aws athena start-query-execution --no-cli-pager --work-group "${WORKGROUP}" --query-string "${query}" --output text)
+    execution_id=${ aws athena start-query-execution --no-cli-pager --work-group "${WORKGROUP}" --query-string "${query}" --output text; }
 
     if [ $? -ne 0 ]; then
         return 1

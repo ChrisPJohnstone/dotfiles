@@ -27,15 +27,15 @@ function run-state-machine() {
     local state_machine_arn execution_arn
     state_machine_arn="${state_machines[0]}"
     if [[ -z "${payload}" ]]; then
-        execution_arn=$(aws stepfunctions start-execution --state-machine-arn "${state_machine_arn}" --query "executionArn" --output text)
+        execution_arn=${ aws stepfunctions start-execution --state-machine-arn "${state_machine_arn}" --query "executionArn" --output text; }
     else
-        execution_arn=$(aws stepfunctions start-execution --state-machine-arn "${state_machine_arn}" --query "executionArn" --output text --input "${payload}")
+        execution_arn=${ aws stepfunctions start-execution --state-machine-arn "${state_machine_arn}" --query "executionArn" --output text --input "${payload}"; }
     fi
 
     echo "STARTED ${execution_arn}"
     local execution_status
     while true; do
-        execution_status=$(aws stepfunctions describe-execution --execution-arn "${execution_arn}" --query "status" --output text)
+        execution_status=${ aws stepfunctions describe-execution --execution-arn "${execution_arn}" --query "status" --output text; }
         echo "${execution_status} ${execution_arn}"
         case "${execution_status}" in
             SUCCEEDED) return 0;;
