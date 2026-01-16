@@ -35,3 +35,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.hl.on_yank({ timeout = 300 })
   end,
 })
+
+-- Commit notes on save
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = vim.fn.expand("~/notes/daily/") .. "*.md",
+  command = "silent !git add % && git commit -m 'Updated notes' && git push",
+})
