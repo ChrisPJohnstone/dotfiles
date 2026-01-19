@@ -39,5 +39,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Commit notes on save
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = vim.fn.expand("~/notes/daily/") .. "*.md",
-  command = "silent !git add % && git commit -m 'Updated notes' && git push",
+  command = "silent !cd %:~:h && git add %:t && git commit -m 'Updated notes' && git push",
 })
