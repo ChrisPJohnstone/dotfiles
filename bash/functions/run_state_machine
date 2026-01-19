@@ -10,9 +10,9 @@ function run-state-machine() {
     fi
 
     local query
-    query="stateMachines[?contains(name, \`$name\`)].stateMachineArn"
+    query="stateMachines[?contains(name, \`$name\`)].[stateMachineArn]"
     declare -a state_machines
-    mapfile -t state_machines < <(aws stepfunctions list-state-machines --query "${query}" --output text | cut -f 3)
+    mapfile -t state_machines < <(aws stepfunctions list-state-machines --query "${query}" --output text)
     declare -i count
     count=${#state_machines[@]}
     if [[ "${count}" == 0 ]]; then
