@@ -4,6 +4,10 @@
       "rev": "20ad4419564d6e22b189f6738116b38871082332",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
+    "markview.nvim": {
+      "rev": "c81ce9ed129387fc5fdec91abe9818a1b0e6fcac",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
     "mason.nvim": {
       "rev": "7dc4facca9702f95353d5a1f87daf23d78e31c2a",
       "src": "https://github.com/mason-org/mason.nvim"
