@@ -15,7 +15,8 @@ vim.lsp.enable({
   "copilot",
   "json",
   "lua",
-  "python",
+  "py_ruff",
+  "py_zuban",
   "terraform",
   "yaml",
 })
