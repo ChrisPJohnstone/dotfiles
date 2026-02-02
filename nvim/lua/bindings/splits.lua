@@ -1,5 +1,9 @@
 -- Set <C-W>n to vertical split
-vim.keymap.set("n", "<C-W>n", ":vnew<CR>", { noremap = true })
+vim.keymap.set("n", "<C-W>n", function()
+  vim.cmd.vnew()
+  vim.cmd.set("buftype=nofile")
+  vim.cmd.set("ft=markdown")
+end, { noremap = true })
 
 -- Enable resizing with Ctrl + hjkl
 vim.keymap.set("n", "<C-W><C-h>", "<C-W><", { noremap = true })
