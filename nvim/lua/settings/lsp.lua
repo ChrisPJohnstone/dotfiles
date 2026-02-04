@@ -27,6 +27,7 @@ local lsp_augroup = vim.api.nvim_create_augroup("LSP", {})
 function LSPFormatOnSave(client, buf)
   if not client:supports_method("textDocument/formatting") then return end
   if client:supports_method("textDocument/willSaveWaitUntil") then return end
+  if client.name == "py_ruff" then return end -- Skip ruff formatting
   vim.api.nvim_create_autocmd("BufWritePre", {
     group = lsp_augroup,
     buffer = buf,
