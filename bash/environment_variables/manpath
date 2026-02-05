@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+export MANPATH="/opt/homebrew/share/man:$MANPATH"
