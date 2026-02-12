@@ -1,5 +1,5 @@
 return {
-  cmd = { "zuban", "server" },
+  cmd = { "ty", "server" },
   filetypes = { "python" },
   root_markers = {
     'pyproject.toml',
@@ -12,4 +12,4 @@ return {
     '.ruff.toml',
   },
 }
--- Dependencies `zuban`
+-- Dependencies `ty`
