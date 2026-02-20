@@ -17,7 +17,8 @@ vim.lsp.enable({
   "lua",
   "py_lint",
   "py_type",
-  "terraform",
+  -- "terraform",
+  "tf_lint",
   "yaml",
 })
 
