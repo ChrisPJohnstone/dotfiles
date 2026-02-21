@@ -12,6 +12,7 @@ vim.diagnostic.config({
 -- Enable LSPs
 vim.lsp.enable({
   "bash",
+  "c",
   "copilot",
   "json",
   "lua",
