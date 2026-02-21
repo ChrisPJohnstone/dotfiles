@@ -25,7 +25,8 @@ window#waybar {
 #cpu,
 #temperature,
 #custom-gpu,
-#pulseaudio {
+#pulseaudio,
+#battery {
     background-color: @grey;
     color: @text;
     border: none;
@@ -57,7 +58,7 @@ window#waybar {
     border-radius: 10px 0px 0px 10px;
 }
 
-#pulseaudio {
+#battery {
     border-radius: 0px 10px 10px 0px;
     margin-right: 5px;
 }
@@ -71,7 +72,8 @@ window#waybar {
 #cpu:hover,
 #temperature:hover,
 #custom-gpu:hover,
-#pulseaudio:hover {
+#pulseaudio:hover,
+#battery:hover {
     background: @highlight;
     color: @grey;
     box-shadow: inherit;

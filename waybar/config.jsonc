@@ -16,7 +16,8 @@
         "cpu",
         "temperature",
         "custom/gpu",
-        "pulseaudio"
+        "pulseaudio",
+        "battery"
     ],
     "hyprland/workspaces": {
         "all-outputs": false,
@@ -96,5 +97,14 @@
             ]
         },
         "on-click": "pavucontrol"
+    },
+    "battery": {
+        "format-icons": ["󱊡", "󱊢", "󱊣"],
+        "format": "{icon} {capacity}%",
+        "format-charging": "{icon} {capacity}% ⚡",
+        "format-discharging": "{icon} {capacity}%",
+        "color-charging": "#4CAF50",
+        "color-discharging": "#FF9800",
+        "color-critical": "#F44336"
     }
 }
