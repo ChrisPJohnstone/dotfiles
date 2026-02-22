@@ -4,7 +4,6 @@ SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 
 "${SCRIPT_DIR}/bash/install"
 "${SCRIPT_DIR}/git/install"
-"${SCRIPT_DIR}/glow/install"
 "${SCRIPT_DIR}/kitty/install"
 "${SCRIPT_DIR}/nano/install"
 "${SCRIPT_DIR}/nvim/install"
