@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+SCRIPT_PATH=$(readlink -f "${BASH_SOURCE[0]}")
+SCRIPT_DIR=$(dirname "${SCRIPT_PATH}")
+ln -sfn "${SCRIPT_DIR}/CLAUDE.md" "${HOME}/.claude/CLAUDE.md"
+ln -sfn "${SCRIPT_DIR}/skills" "${HOME}/.claude/skills"

@@ -17,5 +17,6 @@ if [[ "$(uname)" == "Linux" ]]; then
     "${SCRIPT_DIR}/rofi/install"
     "${SCRIPT_DIR}/waybar/install"
 elif [[ "$(uname)" == "Darwin" ]]; then
+    "${SCRIPT_DIR}/claude/install"
     "${SCRIPT_DIR}/skhd/install"
 fi

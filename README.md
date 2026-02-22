@@ -29,6 +29,7 @@ Tools that I use across all operating systems.
 ## MacOS
 
 Tools that I use on macOS.
+- [claude](https://claude.com/product/claude-code) Coding Assistant
 - [skhd](https://github.com/koekeishiya/skhd) Keyboard shortcut daemon for macOS
 
 ## Linux
