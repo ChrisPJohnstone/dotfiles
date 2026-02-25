@@ -1,6 +1,6 @@
 ---
 name: sql
-description: SQL conventions, style, and best practices for AWS Athena (HiveSQL DDL, Presto DML). Use when working on SQL queries, DDL, or data pipelines targeting Athena.
+description:   SQL conventions and best practices specifically for AWS Athena — HiveSQL DDL and Presto DML, including partitioning, CTEs, NULL handling, and query cost. Invoke whenever the user mentions Athena, Presto, Hive tables, or CTAS, or when a SQL query is clearly running in a data lake / S3-backed warehouse context.
 ---
 
 ## Dialect Context

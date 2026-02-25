@@ -1,6 +1,6 @@
 ---
 name: bash
-description: Bash scripting conventions, style, and best practices. Use when working on bash/shell scripts.
+description:   Bash scripting conventions, style, and best practices including shellcheck compliance, argument parsing, and error handling. Invoke when the user explicitly mentions a .sh file, bash script, or asks to write/fix/improve a shell script.
 ---
 
 ## Script Header

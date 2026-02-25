@@ -1,6 +1,7 @@
 ---
 name: python
-description: Python coding conventions, style, environment setup, and testing. Use when working on Python code or projects.
+description: Python coding conventions, style, type hints, testing with pytest, and environment setup. Invoke whenever the user is writing, editing, debugging, or refactoring Python code — including adding type hints, fixing ruff/black warnings, setting up a venv, or writing pytest tests.
+
 ---
 
 ## Behaviour Rules
