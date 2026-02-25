@@ -59,7 +59,7 @@ description: SQL conventions, style, and best practices for AWS Athena (HiveSQL 
       "recent_orders"."order_count"
   FROM "active_users"
   LEFT JOIN "recent_orders"
-      ON "active_users"."user_id" = "recent_orders"."user_id"
+      ON  "active_users"."user_id" = "recent_orders"."user_id"
   ```
 - Always use explicit `AS` for aliases — never implicit
 - Never use `SELECT *` in production queries — always name columns explicitly
@@ -96,13 +96,13 @@ description: SQL conventions, style, and best practices for AWS Athena (HiveSQL 
 
 - Always use explicit JOIN types — never implicit comma joins
 - Prefer `LEFT JOIN` over `RIGHT JOIN` — restructure the query instead
-- Always place `ON` conditions on a new line, indented:
+- Always place `ON` conditions on a new line, indented, with two spaces after `ON` to align with `AND`:
   ```sql
   LEFT JOIN "schema"."users"
-      ON "orders"."user_id" = "users"."user_id"
+      ON  "orders"."user_id" = "users"."user_id"
 
   LEFT JOIN "schema"."users"
-      ON "orders"."user_id" = "users"."user_id"
+      ON  "orders"."user_id" = "users"."user_id"
       AND "users"."is_active" = true
   ```
 
@@ -151,9 +151,10 @@ description: SQL conventions, style, and best practices for AWS Athena (HiveSQL 
   WHERE "orders"."status" IN ('complete', 'pending', 'refunded')
 
   -- bad
-  WHERE "orders"."status" = 'complete'
-      OR "orders"."status" = 'pending'
-      OR "orders"."status" = 'refunded'
+  WHERE
+          "orders"."status" = 'complete'
+      OR  "orders"."status" = 'pending'
+      OR  "orders"."status" = 'refunded'
   ```
 - Push filters as early as possible — filter inside CTEs rather than in the outer query
 - Avoid `DISTINCT` unless genuinely needed; prefer `GROUP BY` when aggregation is the goal
