@@ -1,6 +1,8 @@
 ---
 name: bash
-description:   Bash scripting conventions, style, and best practices including shellcheck compliance, argument parsing, and error handling. Invoke when the user explicitly mentions a .sh file, bash script, or asks to write/fix/improve a shell script.
+description: |
+  Bash/shell scripting conventions, style, and best practices including shellcheck compliance, argument parsing, and error handling.
+  Always invoke this skill for ANY task involving shell scripts — reading or writing .sh, .bash, or other shell script files, fixing shellcheck warnings, writing new scripts, editing existing ones, or debugging shell errors. If a shell script is present or mentioned at all, use this skill.
 ---
 
 ## Script Header

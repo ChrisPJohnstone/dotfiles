@@ -1,6 +1,8 @@
 ---
 name: sql
-description:   SQL conventions and best practices specifically for AWS Athena — HiveSQL DDL and Presto DML, including partitioning, CTEs, NULL handling, and query cost. Invoke whenever the user mentions Athena, Presto, Hive tables, or CTAS, or when a SQL query is clearly running in a data lake / S3-backed warehouse context.
+description: |
+  SQL conventions and best practices specifically for AWS Athena — HiveSQL DDL and Presto DML, including partitioning, CTEs, NULL handling, and query cost.
+  Always invoke this skill for ANY task involving SQL in a data lake or warehouse context — reading or writing .sql files, writing or editing Athena/Presto/Hive queries, fixing query errors, optimising performance, or working with CTAS, partitions, or S3-backed tables. If a SQL query or mention of Athena, Presto, or Hive is present at all, use this skill.
 ---
 
 ## Dialect Context

@@ -1,6 +1,8 @@
 ---
 name: python
-description: Python coding conventions, style, type hints, testing with pytest, and environment setup. Invoke whenever the user is writing, editing, debugging, or refactoring Python code — including adding type hints, fixing ruff/black warnings, setting up a venv, or writing pytest tests.
+description: |
+  Python coding conventions, style, type hints, testing with pytest, and environment setup.
+  Always invoke this skill for ANY task that involves Python — reading a .py file, writing or editing Python code, adding type hints, fixing ruff/black/mypy warnings, writing pytest tests, setting up a venv, or debugging Python errors. If Python code is present or mentioned at all, use this skill.
 
 ---
 
