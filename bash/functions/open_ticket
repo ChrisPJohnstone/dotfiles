@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 function open-ticket() {
+    local DEFAULT_PROJECT="VEGA"
     local JIRA_URL="https://keyloop.atlassian.net"
     local TICKET_ID="$1"
     if [[ -z "${TICKET_ID}" ]]; then
@@ -7,7 +8,7 @@ function open-ticket() {
         return 1
     fi
     if [[ "${TICKET_ID}" =~ ^[0-9] ]]; then
-        URL="${JIRA_URL}/browse/MDATA-${TICKET_ID}"
+        URL="${JIRA_URL}/browse/${DEFAULT_PROJECT}-${TICKET_ID}"
     else
         URL="${JIRA_URL}/browse/${TICKET_ID}"
     fi
