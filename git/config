@@ -15,7 +15,7 @@
 [submodule]
     recurse = true
 [log]
-    date = format:%Y:%m:%d %H:%M:%S %z
+    date = format:%Y-%m-%d %H:%M:%S %z
 [status]
     relativePaths = false
     short = true
