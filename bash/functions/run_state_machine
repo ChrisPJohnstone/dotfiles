@@ -36,10 +36,11 @@ function run-state-machine() {
     local execution_status
     while true; do
         execution_status=${ aws stepfunctions describe-execution --execution-arn "${execution_arn}" --query "status" --output text; }
-        echo "${execution_status} ${execution_arn}"
+        printf '\r%s' "${execution_status} ${execution_arn}"
         case "${execution_status}" in
-            SUCCEEDED) return 0;;
+            SUCCEEDED) printf '\n'; return 0;;
             FAILED)
+                printf '\n'
                 aws stepfunctions describe-execution --execution-arn "${execution_arn}" --query "{status:status,error:error,cause:cause}" --no-cli-pager | \
                     jq '{status: .status, error: .error, cause: (.cause as $cause | try ($cause | fromjson) catch $cause)}'
                 return 1
