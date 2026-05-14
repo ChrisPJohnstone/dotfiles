@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+INPUT=$(cat)
+
+DIR="$(echo "${INPUT}" | jq -r '.workspace.current_dir' | xargs basename)"
+GIT_BRANCH="$(git branch 2> /dev/null | sed -n 's/^\* \(.*\)/ [\1]/p')"
+COST="$(echo "${INPUT}" | jq -r '.cost.total_cost_usd' | awk '{printf "$%.2f", $0}')"
+CONTEXT_PERCENTAGE="$(echo "${INPUT}" | jq -r '.context_window.used_percentage' | sed 's/null/0/')%"
+
+printf '%s' "[${DIR}]" "${GIT_BRANCH}" " [${COST}] [${CONTEXT_PERCENTAGE}]"
