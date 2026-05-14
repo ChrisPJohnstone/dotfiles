@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if [[ "$(uname)" == "Darwin" ]]; then
+    # mkdir -p "${HOME}/.certs"
+    # security find-certificate -a -c "Zscaler Root CA" -p > "${HOME}/.certs/zscaler.pem"
+    export AWS_CA_BUNDLE="${HOME}/.certs/zscaler.pem"
+    export REQUESTS_CA_BUNDLE="${HOME}/.certs/zscaler.pem"
+    export SSL_CERT_FILE="${HOME}/.certs/zscaler.pem"
+fi
