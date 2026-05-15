@@ -5,14 +5,15 @@ function run-state-machine() {
     name="${1}"
     payload="${2}"
     if [ -z "${name}" ] || [ "${n_args}" -eq 0 ] || [ "${n_args}" -gt 2 ]; then
-        echo "Usage: run-state-machine <state-machine-name> [<json-payload>]"
+        echo "Usage: run-state-machine <state-machine-name-regex> [<json-payload>]"
         return 1
     fi
 
-    local query
-    query="stateMachines[?contains(name, \`$name\`)].[stateMachineArn]"
+    local arn state_machines
     declare -a state_machines
-    mapfile -t state_machines < <(aws stepfunctions list-state-machines --query "${query}" --output text)
+    while read -r arn; do
+        [[ "${arn}" =~ ${name} ]] && state_machines+=("${arn}")
+    done < <(aws stepfunctions list-state-machines --query "stateMachines[*].[stateMachineArn]" --output text)
     declare -i count
     count=${#state_machines[@]}
     if [[ "${count}" == 0 ]]; then
