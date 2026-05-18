@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 function open-ticket() {
+    # TODO: Support reading from stdin
+
     local DEFAULT_PROJECT="VEGA"
     local JIRA_URL="https://keyloop.atlassian.net"
     if [[ "$#" -eq 0 ]]; then

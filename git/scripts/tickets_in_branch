@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# TODO: Support args e.g. `tickets-between <from> <to>`
 LATEST_HASH=$(git rev-list --tags --max-count=1)
 LATEST_TAG=$(git describe --tags "${LATEST_HASH}")
 git log --oneline "${LATEST_TAG}"...@ | grep "VEGA" | sed -E 's/.*(VEGA-[0-9]+).*/\1/g' | sort | uniq

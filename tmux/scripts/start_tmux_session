@@ -31,3 +31,6 @@ then
 else
     tmux switch-client -t "${SESSION_NAME}:1"
 fi
+
+# TODO: Fix `tcd ~` (and other explicit variants) to behave the same as `tcd`
+# TODO: Support multiple args
