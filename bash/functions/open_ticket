@@ -2,17 +2,19 @@
 function open-ticket() {
     local DEFAULT_PROJECT="VEGA"
     local JIRA_URL="https://keyloop.atlassian.net"
-    local TICKET_ID="$1"
-    if [[ -z "${TICKET_ID}" ]]; then
+    if [[ "$#" -eq 0 ]]; then
         echo "Usage: ticket <ticket-id>"
         return 1
     fi
-    if [[ "${TICKET_ID}" =~ ^[0-9] ]]; then
-        URL="${JIRA_URL}/browse/${DEFAULT_PROJECT}-${TICKET_ID}"
-    else
-        URL="${JIRA_URL}/browse/${TICKET_ID}"
-    fi
-    ${BROWSER} "${URL}" &> /dev/null
+    local TICKET_ID SUFFIX
+    for TICKET_ID in "$@"; do
+        if [[ "${TICKET_ID}" =~ ^[0-9] ]]; then
+            SUFFIX="${DEFAULT_PROJECT}-${TICKET_ID}"
+        else
+            SUFFIX="${TICKET_ID}"
+        fi
+        ${BROWSER} "${JIRA_URL}/browse/${SUFFIX}" &> /dev/null
+    done
 }
 
 alias ticket=open-ticket
