@@ -41,3 +41,4 @@
     update = !git pull && git checkout develop && git pull && git checkout - && git merge develop --no-edit
     open = !$HOME/.config/git/scripts/open
     tickets-in-branch = !$HOME/.config/git/scripts/tickets_in_branch
+    stash-pull = !git stash && git pull && git stash pop
