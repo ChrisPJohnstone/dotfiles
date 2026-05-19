@@ -2,7 +2,7 @@ hl.monitor({
   output   = "",
   mode     = "preferred",
   position = "auto",
-  scale    = "2",
+  scale    = "3",
 })
 
 hl.env("XCURSOR_SIZE", "24")
