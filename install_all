@@ -12,9 +12,9 @@ SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 if [[ "$(uname)" == "Linux" ]]; then
     "${SCRIPT_DIR}/gammastep/install"
     "${SCRIPT_DIR}/gtk-3.0/install"
-    "${SCRIPT_DIR}/hypr/install"
     "${SCRIPT_DIR}/mako/install"
     "${SCRIPT_DIR}/rofi/install"
+    "${SCRIPT_DIR}/sway/install"
     "${SCRIPT_DIR}/waybar/install"
 elif [[ "$(uname)" == "Darwin" ]]; then
     "${SCRIPT_DIR}/claude/install"
