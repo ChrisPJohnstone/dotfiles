@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+alias note="nvim -c 'ObsidianToday'"

@@ -39,38 +39,6 @@ function LSPFormatOnSave(client, buf)
   })
 end
 
-function LSPCompletion(client, buf)
-  if not client:supports_method("textDocument/completion") then return end
-  vim.opt.completeopt = {
-    "menu",
-    "menuone",
-    "noinsert",
-    "noselect",
-    "fuzzy",
-    "popup",
-  }
-  vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
-end
-
-function LSPInLineCompletion(client, buf)
-  if not client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion, buf) then
-    return
-  end
-  vim.lsp.inline_completion.enable(true, { bufnr = buf })
-  vim.keymap.set(
-    'i',
-    '<C-F>',
-    vim.lsp.inline_completion.get,
-    { desc = 'LSP: accept inline completion', buffer = buf }
-  )
-  vim.keymap.set(
-    'i',
-    '<C-G>',
-    vim.lsp.inline_completion.select,
-    { desc = 'LSP: switch inline completion', buffer = buf }
-  )
-end
-
 function LSPDocumentHighlight(client, buf)
   if vim.fn.mode() == "i" then
     vim.lsp.buf.clear_references()
@@ -95,8 +63,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local buf = args.buf
     LSPFormatOnSave(client, buf)
-    LSPCompletion(client, buf)
-    LSPInLineCompletion(client, buf)
   end
 })
 
