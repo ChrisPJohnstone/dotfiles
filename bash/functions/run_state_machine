@@ -3,6 +3,7 @@ function run-state-machine() {
     local n_args name payload
     n_args=${#}
     name="${1}"
+    # TODO: Move payload to an opt & support multiple state machines?
     payload="${2}"
     if [ -z "${name}" ] || [ "${n_args}" -eq 0 ] || [ "${n_args}" -gt 2 ]; then
         echo "Usage: run-state-machine <state-machine-name-regex> [<json-payload>]"
