@@ -7,7 +7,7 @@ default_border                  pixel 0
 default_floating_border         pixel 0
 
 # Background
-# output "*" bg ~/Pictures/wallpaper.png fill
+output "*" bg ~/Pictures/wallpaper.png fit
 
 # Blue Light Filter
 exec gammastep
