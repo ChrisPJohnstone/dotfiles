@@ -36,6 +36,10 @@
       "rev": "989a8a73c44e926199bfd05fa7a516d51f2d2752",
       "src": "https://github.com/hrsh7th/cmp-vsnip"
     },
+    "conform.nvim": {
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
+      "src": "https://github.com/stevearc/conform.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "20ad4419564d6e22b189f6738116b38871082332",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
