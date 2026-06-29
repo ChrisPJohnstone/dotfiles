@@ -37,8 +37,10 @@ vim.api.nvim_create_autocmd("CursorMoved", {
         break
       end
     end
-    if not supports_highlight then return end
+    if not supports_highlight then
+      return
+    end
     vim.lsp.buf.clear_references()
     vim.lsp.buf.document_highlight()
-  end
+  end,
 })

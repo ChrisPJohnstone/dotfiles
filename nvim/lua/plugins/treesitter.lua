@@ -19,11 +19,11 @@ require("nvim-treesitter.configs").setup({
 })
 
 -- Use treesitter when using expr foldmethod
-vim.api.nvim_create_autocmd({ 'FileType' }, {
+vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
-    if require('nvim-treesitter.parsers').has_parser() then
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.wo.foldmethod = 'expr'
+    if require("nvim-treesitter.parsers").has_parser() then
+      vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+      vim.wo.foldmethod = "expr"
     end
   end,
 })

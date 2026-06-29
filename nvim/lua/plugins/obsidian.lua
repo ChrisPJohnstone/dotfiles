@@ -1,6 +1,6 @@
 vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/epwalsh/obsidian.nvim"
+  "https://github.com/epwalsh/obsidian.nvim",
 })
 require("obsidian").setup({
   workspaces = { {
@@ -39,6 +39,8 @@ vim.keymap.set("n", "<leader>ng", ":ObsidianSearch<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>nh", ":ObsidianTOC<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>nn", function()
   local subject = vim.fn.input("Note: ")
-  if subject == "" then return end
+  if subject == "" then
+    return
+  end
   vim.cmd("ObsidianNew " .. subject)
 end, { desc = "Obsidian: new note" })

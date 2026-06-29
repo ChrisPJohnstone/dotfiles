@@ -15,10 +15,10 @@ require("showkeys").setup({
   },
   winhl = "FloatBorder:Comment,Normal:Normal",
 
-  timeout = 3,   -- in secs
+  timeout = 3, -- in secs
   maxkeys = 10,
   show_count = true,
-  excluded_modes = {"i"},
+  excluded_modes = { "i" },
 
   -- bottom-left, bottom-right, bottom-center, top-left, top-right, top-center
   position = "bottom-right",

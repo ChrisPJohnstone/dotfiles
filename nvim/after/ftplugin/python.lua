@@ -7,7 +7,7 @@ vim.opt_local.formatoptions = "jqlc"
 
 -- Fix python indenting for open parens
 vim.g.python_indent = {
-  open_paren = 'shiftwidth()',
+  open_paren = "shiftwidth()",
   closed_paren_align_last_line = false,
 }
 
