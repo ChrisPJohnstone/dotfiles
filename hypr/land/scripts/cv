@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+kitty --directory ~/Projects/cv -e opencode
