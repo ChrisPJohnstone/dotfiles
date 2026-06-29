@@ -11,16 +11,15 @@ vim.diagnostic.config({
 
 -- Enable LSPs
 vim.lsp.enable({
-  "bash",
-  "c",
+  "bashls",
+  "clangd",
   "copilot",
-  "json",
-  "lua",
-  "py_lint",
-  "py_type",
-  -- "terraform",
-  "tf_lint",
-  "yaml",
+  "jsonls",
+  "lua_ls",
+  "ruff",
+  "terraformls",
+  "ty",
+  "yamlls",
 })
 
 -- LSP augroup

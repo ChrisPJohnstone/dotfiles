@@ -2,6 +2,7 @@ require("plugins.mason")
 
 require("plugins.blink-cmp")
 require("plugins.gitsigns")
+require("plugins.lspconfig")
 require("plugins.mini-comment")
 require("plugins.mini-diff")
 require("plugins.mini-hipatterns")
