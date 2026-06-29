@@ -7,6 +7,7 @@ local cmp = require('blink.cmp')
 cmp.build():pwait()
 cmp.setup({
   cmdline = { enabled = false },
+  signature = { enabled = true },
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer', 'obsidian', 'obsidian_new', 'obsidian_tags' },
     providers = {
