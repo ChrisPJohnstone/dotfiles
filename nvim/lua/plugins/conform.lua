@@ -3,6 +3,7 @@ require("conform").setup({
   formatters_by_ft = {
     c = { "clang-format" },
     json = { "prettier" },
+    go = { "gofmt" },
     lua = { "stylua" },
     markdown = { "prettier" },
     python = { "ruff" },
