@@ -38,7 +38,7 @@
 [alias]
     edit = !$EDITOR $(git ls-files -o -m --exclude-standard)
     newbranch = !git checkout develop && git pull && git checkout -b $1
-    update = !git pull && git checkout develop && git pull && git checkout - && git merge develop --no-edit
+    update = !git checkout main && git pull && git checkout - && git rebase main
     open = !$HOME/.config/git/scripts/open
     tickets-in-branch = !$HOME/.config/git/scripts/tickets_in_branch
     stash-pull = !git stash && git pull && git stash pop
