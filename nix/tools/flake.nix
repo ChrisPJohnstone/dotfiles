@@ -15,7 +15,6 @@
           [
             delta
             git
-            kitty
             tmux
             vim
           ]
