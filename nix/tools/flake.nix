@@ -15,7 +15,6 @@
           [
             delta
             git
-            tmux
             vim
           ]
           ++ import ./neovim.nix { inherit pkgs; };
