@@ -10,7 +10,7 @@ with pkgs; [
   bash-language-server
   copilot-language-server
   gopls
-  # json-lsp
+  vscode-json-languageserver
   lua-language-server
   prettier
   # qmlls
