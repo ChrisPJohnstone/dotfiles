@@ -10,14 +10,10 @@
       };
     in {
       packages.${system}.default = pkgs.buildEnv {
-        name = "dev-tools";
+        name = "tools";
         paths = with pkgs;
-          [
-            delta
-            git
-            vim
-          ]
-          ++ import ./neovim.nix { inherit pkgs; };
+          import ./packages/shared.nix { inherit pkgs; }
+          ++ import ./packages/neovim.nix { inherit pkgs; };
       };
     };
 }
