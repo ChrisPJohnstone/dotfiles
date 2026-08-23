@@ -6,6 +6,7 @@ SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
 "${SCRIPT_DIR}/git/install"
 "${SCRIPT_DIR}/kitty/install"
 "${SCRIPT_DIR}/nano/install"
+"${SCRIPT_DIR}/nix/install"
 "${SCRIPT_DIR}/nvim/install"
 "${SCRIPT_DIR}/tmux/install"
 "${SCRIPT_DIR}/vim/install"
