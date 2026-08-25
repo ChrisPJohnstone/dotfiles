@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 function session() {
-    local path="${1%/}"
-    [[ "${path}" != /* ]] && path="${PWD}/${path}"
-    if [[ ! -d "${path}" ]]; then
-        echo "${path} is not a directory" 1>&2
-        return 1
+    local path session
+    path="${ cd "${1}" && pwd; }" || return 1
+    if [[ "${path}" == "${HOME}" ]]; then
+        session="Home"
+    else
+        session="${path##*/}"
     fi
-
-    local session="${2:-${path##*/}}"
 
     if ! tmux has-session -t "${session}" 2> /dev/null; then
         tmux new-session -d -s "${session}" -c "${path}" -n "Home" || return 1
@@ -24,11 +23,11 @@ function session() {
 }
 
 if [[ $# -eq 0 ]]; then
-    session "${HOME}" "Home"
+    session "${HOME}"
     exit $?
 fi
 for path in "${@}"; do
     session "${path}" || exit $?
 done
 
-# TODO: Fix `tcd ~` (and other explicit variants) to behave the same as `tcd`
+# TODO: Support `/` (maybe)
