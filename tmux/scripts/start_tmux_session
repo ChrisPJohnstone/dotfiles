@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 function session() {
     local path session
-    path="${ cd "${1}" && pwd; }" || return 1
+    path="$( cd "${1}" && pwd )" || return 1
     if [[ "${path}" == "${HOME}" ]]; then
         session="Home"
     else
