@@ -7,4 +7,4 @@ vim.opt_local.tabstop = 2
 
 -- Fold Settings
 vim.opt_local.foldenable = true
-vim.opt_local.foldlevel = 0
+vim.opt_local.foldlevel = 1
