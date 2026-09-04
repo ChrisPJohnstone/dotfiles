@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-function hide-cursor() {
+function move-cursor() {
     local x="${1:-0}"
     local y="${2:-0}"
     hyprctl dispatch "hl.dsp.cursor.move({x=${x}, y=${y}})"
