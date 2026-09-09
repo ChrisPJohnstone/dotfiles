@@ -1,8 +1,8 @@
 hl.monitor({
   output   = "",
-  mode     = "preferred",
+  mode     = "1920x1080@120",
   position = "auto",
-  scale    = "3",
+  scale    = "1",
 })
 
 hl.env("XCURSOR_SIZE", "24")
