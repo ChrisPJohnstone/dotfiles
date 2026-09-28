@@ -3,7 +3,7 @@ function open-ticket() {
     # TODO: Support reading from stdin
 
     local DEFAULT_PROJECT="VEGA"
-    local JIRA_URL="https://keyloop.atlassian.net"
+    local JIRA_URL="https://certinia.atlassian.net"
     if [[ "$#" -eq 0 ]]; then
         echo "Usage: ticket <ticket-id>"
         return 1
