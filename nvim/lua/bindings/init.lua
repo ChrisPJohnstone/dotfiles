@@ -6,7 +6,7 @@ require("bindings.splits")
 -- Save focused file
 vim.keymap.set("n", "<leader>s", ":w<CR>", { noremap = true })
 
--- Convert Jira URL to markdown link: https://*.atlassian.net/browse/VEGA-1040 → [VEGA-1040](url)
+-- Convert Jira URL to markdown link: https://*.atlassian.net/browse/ABC-1040 → [ABC-1040](url)
 vim.keymap.set(
   "n",
   "<leader>j",
