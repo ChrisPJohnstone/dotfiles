@@ -1,0 +1,9 @@
+WRN 2026-09-30T09:39:52.750 ?.13533    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/8p5ZPz/nvim.13533.0
+WRN 2026-09-30T09:39:58.375 ?.13657    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/zFYRjK/nvim.13657.0
+WRN 2026-09-30T09:40:03.837 ?.13695    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/cvRQv3/nvim.13695.0
+WRN 2026-09-30T09:41:32.216 ?.14277    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/k18c9P/nvim.14277.0
+WRN 2026-09-30T09:41:42.876 ?.14413    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/VbhbN5/nvim.14413.0
+WRN 2026-09-30T09:41:57.507 ?.14522    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/oft938/nvim.14522.0
+WRN 2026-09-30T09:42:03.091 ?.14600    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/Rkz743/nvim.14600.0
+WRN 2026-09-30T09:42:23.052 ?.14792    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/d7aG4Y/nvim.14792.0
+WRN 2026-09-30T09:43:08.901 ?.15223    server_start:197: Failed to start server: operation not permitted: /tmp/claude-502/nvim.cjohnstone/Doki7H/nvim.15223.0
