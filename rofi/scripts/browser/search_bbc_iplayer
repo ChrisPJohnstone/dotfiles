@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+piactl disconnect
+"${1}" "https://www.bbc.co.uk/iplayer/search?q=${2}"

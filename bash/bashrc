@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Exit if not in interactive mode
+[[ $- != *i* ]] && return
+
 function source_files_in_dir() {
     DIR="${1}"
     for FILE in "${DIR}"/*; do
