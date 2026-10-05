@@ -10,6 +10,7 @@ require('nvim-treesitter').install({
   "bash",
   "editorconfig",
   "go",
+  "groovy",
   "json",
   "lua",
   "make",
@@ -27,6 +28,10 @@ require('nvim-treesitter').install({
 -- `shell` and `zsh` are not parser names, so code fences tagged with them
 -- get no highlighting unless they are aliased to bash
 vim.treesitter.language.register("bash", { "shell", "zsh" })
+
+----------------------------------------------------------------------
+-- These should go per filetype, in `after/ftplugin/{filetype}.lua` --
+----------------------------------------------------------------------
 
 -- Highlighting
 -- vim.treesitter.start()
