@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+function usage() {
+    echo "Usage: git fc <branch_substring>"
+}
+
+function find-branch() {
+    local branch_substring="${1}"
+    if [[ -z "${branch_substring}" ]]; then
+        usage
+        exit 1
+    fi
+    local -a matches
+    local -A is_seen
+    local ref
+    local branch
+    while read -r ref; do
+        branch="${ref#refs/heads/}"
+        branch="${branch#refs/remotes/*/}"
+        if [[ "${branch}" == "HEAD" || -n "${is_seen[${branch}]}" ]]; then
+            continue
+        fi
+        if [[ "${branch}" != *"${branch_substring}"* ]]; then
+            continue
+        fi
+        is_seen["${branch}"]=1
+        matches+=("${branch}")
+    done < <(git for-each-ref --format='%(refname)' refs/heads refs/remotes)
+    local -i count="${#matches[@]}"
+    if (( count == 0 )); then
+        printf "No branch matching '%s'\n" "${branch_substring}" >&2
+        exit 1
+    fi
+    if (( count > 1 )); then
+        printf "Multiple branches match '%s':\n" "${branch_substring}" >&2
+        printf "  %s\n" "${matches[@]}" >&2
+        exit 1
+    fi
+    git checkout "${matches[0]}"
+}
+
+find-branch "$@"

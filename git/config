@@ -42,3 +42,4 @@
     open = !$HOME/.config/git/scripts/open
     tickets-in-branch = !$HOME/.config/git/scripts/tickets_in_branch
     stash-pull = !git stash && git pull && git stash pop
+    fc = !$HOME/.config/git/scripts/fuzzy_checkout
