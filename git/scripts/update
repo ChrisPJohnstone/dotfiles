@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+function update() {
+    local -a remote
+    mapfile -t remote < <( git remote )
+    if [[ "${#remote[@]}" -gt 1 ]]; then
+        echo "There are multiple remotes, this is currently not supported"
+        exit 1
+    fi
+    git fetch "${remote[0]}"
+    local head_branch
+    head_branch="${ git remote show "${remote[0]}" | grep 'HEAD branch: ' | sed -E 's/^.*HEAD branch: (.*)$/\1/'; }"
+    if [[ -z "${head_branch}" ]]; then
+        echo "HEAD branch not found"
+        exit 1
+    fi
+    git pull
+    git merge "${remote[0]}/${head_branch}"
+}
+
+update "$@"
