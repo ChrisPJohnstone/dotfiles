@@ -18,6 +18,7 @@ declare -A SITES=(
     ["BT Mail"]="mail.bt.com"
     ["Channel 4"]="www.channel4.com"
     ["Chess"]="www.chess.com"
+    ["Cloudflare"]="dash.cloudflare.com"
     ["GMail"]="mail.google.com"
     ["Github"]="www.github.com/ChrisPJohnstone"
     ["Google Sheets"]="sheets.google.com"
