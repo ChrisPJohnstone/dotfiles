@@ -9,20 +9,23 @@ vim.diagnostic.config({
   virtual_lines = { current_line = true },
 })
 
--- Enable LSPs
-vim.lsp.enable({
-  "bashls",
-  "clangd",
-  "copilot",
-  "gopls",
-  "jsonls",
-  "lua_ls",
-  "qmlls",
-  "ruff",
-  "terraformls",
-  "ty",
-  "yamlls",
-})
+-- Wait till other setup actions are completed to avoid race conditions
+vim.defer_fn(function()
+  -- Enable LSPs
+  vim.lsp.enable({
+    "bashls",
+    "clangd",
+    "copilot",
+    "gopls",
+    "jsonls",
+    "lua_ls",
+    "qmlls",
+    "ruff",
+    "terraformls",
+    "ty",
+    "yamlls",
+  })
+end, 0)
 
 -- Document Highlighting
 vim.api.nvim_create_autocmd("CursorMoved", {
