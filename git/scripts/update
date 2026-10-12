@@ -13,8 +13,12 @@ function update() {
         echo "HEAD branch not found"
         exit 1
     fi
-    git pull
-    git merge "${remote[0]}/${head_branch}"
+    if git rev-parse --abbrev-ref --symbolic-full-name "@{u}" &> /dev/null; then
+        git pull
+        git merge "${remote[0]}/${head_branch}"
+    else
+        git rebase "${remote[0]}/${head_branch}"
+    fi
 }
 
 update "$@"
