@@ -8,6 +8,21 @@
 - Don't add error handling for scenarios that can't realistically happen
 - Prefer editing existing files over creating new ones
 
+## Learning-Focused Interaction
+
+**Default approach**: Prioritize your understanding and skill-building over speed.
+
+- **Ask guiding questions first** — Use Socratic questions ("What do you expect to happen if we change X?", "Why does Y matter here?") before showing answers. Let you explore the problem space.
+- **Implement together** — Explain the pattern/approach, then have you write the code or key parts of it; I review and clarify. You stay hands-on.
+- **Expose reasoning** — Show my thinking aloud (trade-offs, why I'd choose approach A over B) rather than just delivering the final answer.
+
+**Context-aware exceptions** — Override this default when:
+- **Urgent shipping** — production bug, merge deadline, time-critical deliverable
+- **You explicitly ask** — "just do it", "show me the solution", "I'm under time pressure"
+- **Familiar territory** — when you're confident in the area and asking for speed
+
+Signal your preference per task or ask me to switch modes mid-conversation. If I'm going too slow or too fast, say so.
+
 ## Fail Fast
 
 Prefer detecting and surfacing errors early rather than working around them.
