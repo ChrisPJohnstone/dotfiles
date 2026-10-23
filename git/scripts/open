@@ -10,7 +10,7 @@ function _build_github_url() {
 function _build_bitbucket_url() {
     local SITE USER REPO HASH FILEPATH URL
     read -r SITE USER REPO HASH FILEPATH <<< "${@}"
-    URL="https://www.${SITE}/${USER}/${REPO}/src/${HASH}"
+    URL="https://www.${SITE/ssh\./}/${USER}/${REPO}/src/${HASH}"
     [[ -z ${FILEPATH} ]] && echo "${URL}" || echo "${URL}/${FILEPATH}"
     return 0
 }
@@ -41,7 +41,7 @@ function build_url() {
     if [[ "${SITE}" = "github.com" ]]; then
         _build_github_url "${ARGS[@]}"
         return 0
-    elif [[ "${SITE}" = "bitbucket.org" ]]; then
+    elif [[ "${SITE/ssh\./}" = "bitbucket.org" ]]; then
         _build_bitbucket_url "${ARGS[@]}"
         return 0
     fi

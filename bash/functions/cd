@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+function cd() {
+    # I don't think `cd` actually supports more than one argument but I also
+    # don't want to mess with a builtin too hard. Expanding dots and passing
+    # everything "as close to raw" feels safest
+    local -a args
+    args=( "${@}" )
+
+    # Expands repeated dots `....` becomes `../../..`
+    for (( i = 0; i < "${#args[*]}"; i++ )); do
+        while [[ "${args[i]}" =~ \.\.\.+ ]]; do
+            args[i]="${args[i]//\.\.\./..\/..}"
+        done
+    done
+
+    builtin cd "${args[@]}" || return $?
+    return 0
+}
