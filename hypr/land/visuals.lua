@@ -8,26 +8,15 @@ hl.monitor({
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
--- Only use gaps when >1 window in workspacw
-hl.workspace_rule({
-  workspace = "w[tv1]",
-  gaps_out = 0,
-  gaps_in = 0,
-})
-hl.window_rule({
-  name = "Smart Gaps",
-  match = {
-    workspace = "w[tv1]",
-    float = false,
-  },
-  border_size = 0,
-  rounding = 0,
-})
-
 hl.config({
   general = {
     gaps_in = 5,
-    gaps_out = 10,
+    gaps_out = {
+      top     = 0,
+      bottom  = 25,
+      left    = 40,
+      right   = 40,
+    },
     border_size = 2,
     layout = dwindle,
   },
