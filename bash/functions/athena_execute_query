@@ -21,9 +21,33 @@ function athena-execute-query() {
             --work-group "${workgroup}" \
             --query-string "${query}";
     } || return "${?}"
-    aws athena get-query-execution \
-        --no-cli-pager \
+    echo "aws athena get-query-execution --query-execution-id ${execution_id}"
+    local status
+    while true; do
+        status=${
+            aws athena get-query-execution \
+                --query-execution-id "${execution_id}" \
+                --query 'QueryExecution.Status.State' \
+                --output text;
+        } || return "${?}"
+        case "${status}" in
+            SUCCEEDED) break;;
+            FAILED)
+                printf '\r%s\n' "Execution ${status}" >&2
+                break;;
+            *)
+                printf '%s' "${status}" >&2
+                sleep 5;;
+        esac
+    done
+    printf '\r' >&2
+    local output_file
+    output_file=${
+        aws athena get-query-execution \
         --query-execution-id "${execution_id}" \
-        || return "${?}"
+        --query 'QueryExecution.ResultConfiguration.OutputLocation' \
+        --output text;
+    } || return "${?}"
+    aws s3 cp "${output_file}" -
     return 0
 }
