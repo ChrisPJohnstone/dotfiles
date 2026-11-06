@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 function athena-execute-query() {
-    local query
-    query="${*}"
+    # TODO: Take input over stdin
+    local query="${*}"
     if [ -z "${query}" ]; then
         echo "Usage: athena-execute-query <query>"
         return 1
     fi
-    [ -z "${WORKGROUP}" ] && WORKGROUP="primary"
-
+    local workgroup="${WORKGROUP:-primary}"
     local execution_id
-    execution_id=${ aws athena start-query-execution --no-cli-pager --work-group "${WORKGROUP}" --query-string "${query}" --output text; }
-
-    if [ $? -ne 0 ]; then
-        return 1
-    fi
-
-    echo "Query submitted. Execution ID: ${execution_id}. To check the outcome, run:"
-    echo "aws athena get-query-execution --no-cli-pager --query-execution-id ${execution_id}"
+    execution_id=${
+        aws athena start-query-execution \
+            --no-cli-pager  --output text \
+            --work-group "${workgroup}" \
+            --query-string "${query}";
+    } || return "${?}"
+    aws athena get-query-execution \
+        --no-cli-pager \
+        --query-execution-id "${execution_id}" \
+        || return "${?}"
+    return 0
 }
