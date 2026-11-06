@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 function athena-execute-query() {
-    # TODO: Take input over stdin
-    local query="${*}"
-    if [ -z "${query}" ]; then
-        echo "Usage: athena-execute-query <query>"
+    if [[ $# -eq 0 && -t 0 ]]; then
+        printf "Usage: athena-execute-query <query> | <query on stdin>\n" >&2
         return 1
+    fi
+    local query
+    if (( $# > 0 )); then
+        query="${*}"
+    else
+        local line
+        while read -r line || [[ -n "${line}" ]]; do
+            query+="${line} "
+        done
     fi
     local workgroup="${WORKGROUP:-primary}"
     local execution_id
