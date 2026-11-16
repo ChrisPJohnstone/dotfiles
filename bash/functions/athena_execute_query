@@ -34,7 +34,7 @@ function athena-execute-query() {
             SUCCEEDED) break;;
             FAILED)
                 printf '\r%s\n' "Execution ${status}" >&2
-                break;;
+                return 1;;
             *)
                 printf '%s' "${status}" >&2
                 sleep 5;;
