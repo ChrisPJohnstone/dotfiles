@@ -1,20 +1,53 @@
 #!/usr/bin/env bash
 function athena-execute-query() {
+    if [[ $# -eq 0 && -t 0 ]]; then
+        printf "Usage: athena-execute-query <query> | <query on stdin>\n" >&2
+        return 1
+    fi
     local query
-    query="${*}"
-    if [ -z "${query}" ]; then
-        echo "Usage: athena-execute-query <query>"
-        return 1
+    if (( $# > 0 )); then
+        query="${*}"
+    else
+        local line
+        while read -r line || [[ -n "${line}" ]]; do
+            query+="${line} "
+        done
     fi
-    [ -z "${WORKGROUP}" ] && WORKGROUP="primary"
-
+    local workgroup="${WORKGROUP:-primary}"
     local execution_id
-    execution_id=${ aws athena start-query-execution --no-cli-pager --work-group "${WORKGROUP}" --query-string "${query}" --output text; }
-
-    if [ $? -ne 0 ]; then
-        return 1
-    fi
-
-    echo "Query submitted. Execution ID: ${execution_id}. To check the outcome, run:"
-    echo "aws athena get-query-execution --no-cli-pager --query-execution-id ${execution_id}"
+    execution_id=${
+        aws athena start-query-execution \
+            --no-cli-pager  --output text \
+            --work-group "${workgroup}" \
+            --query-string "${query}";
+    } || return "${?}"
+    echo "aws athena get-query-execution --query-execution-id ${execution_id}"
+    local status
+    while true; do
+        status=${
+            aws athena get-query-execution \
+                --query-execution-id "${execution_id}" \
+                --query 'QueryExecution.Status.State' \
+                --output text;
+        } || return "${?}"
+        case "${status}" in
+            SUCCEEDED) break;;
+            FAILED)
+                printf '\r%s\n' "Execution ${status}" >&2
+                return 1;;
+            *)
+                printf '%s' "${status}" >&2
+                sleep 5;;
+        esac
+    done
+    printf '\r' >&2
+    local output_file
+    output_file=${
+        aws athena get-query-execution \
+        --query-execution-id "${execution_id}" \
+        --query 'QueryExecution.ResultConfiguration.OutputLocation' \
+        --output text;
+    } || return "${?}"
+    aws s3 cp "${output_file}" -
+    return 0
 }

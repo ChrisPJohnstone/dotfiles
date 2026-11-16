@@ -1,14 +1,17 @@
-vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", })
+vim.pack.add({ "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" })
 
-
-require('nvim-treesitter-textobjects').setup({
+require("nvim-treesitter-textobjects").setup({
   select = {
     lookahead = true,
-  }
+    selection_modes = {
+      ["@block.inner"] = "v",
+    },
+  },
 })
-vim.keymap.set({ "n", "x", "o" }, "ic", function()
+
+vim.keymap.set({ "x", "o" }, "ic", function()
   vim.b.is_code_block_selection = true
-  require "nvim-treesitter-textobjects.select".select_textobject("@block.inner", "textobjects")
+  require("nvim-treesitter-textobjects.select").select_textobject("@block.inner", "textobjects")
 end)
 
 -- Strip the code fence's indentation from yanked code blocks, so the

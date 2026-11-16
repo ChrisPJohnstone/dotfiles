@@ -12,6 +12,9 @@
     ; recurseSubmodules = on-demand
 [pull]
     rebase = true
+; Overwrite tags on pull
+[remote "origin"]
+    fetch = +refs/tags/*:refs/tags/*
 [submodule]
     recurse = true
 [log]
