@@ -15,7 +15,6 @@ vim.defer_fn(function()
   vim.lsp.enable({
     "bashls",
     "clangd",
-    "copilot",
     "docker_language_server",
     "docker_compose_language_service",
     "gopls",
