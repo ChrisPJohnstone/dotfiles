@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "modules-left": [
-        "sway/workspaces"
+        "hyprland/workspaces"
     ],
     "modules-center": [
         "clock"

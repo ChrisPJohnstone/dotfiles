@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 declare -A OPTIONS=(
     ["Lock"]="hyprlock"
-    ["Log Out"]="hyprctl dispatch exit"
+	["Log Out"]="hyprctl dispatch 'hl.dsp.exit()'"
     ["Reboot"]="reboot"
     ["Shutdown"]="shutdown now"
 )
